@@ -2,7 +2,7 @@ from flask import Flask
 from flask import send_file
 from flask import render_template
 app = Flask(__name__)
-app._static_folder = "/Users/tylerfolkman/projects/dashboard/static" 
+app._static_folder = "/Users/tylerfolkman/projects/lwd_website/static"
 
 @app.route("/")
 def index():
