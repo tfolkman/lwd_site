@@ -7,28 +7,20 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
     <title>Learning With Data</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/app.css" rel="stylesheet">
     <link href="/static/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+    <link rel="stylesheet" type="text/css" href="/static/jquery.fullPage.css" />
 
 
   </head>
 
   <body>
+
+  <!-- NAVIGATION BAR -->
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -39,7 +31,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Learning With Data</a>
+          <a class="navbar-brand" href="/">Learning With Data</a>
         </div>
 
          <div id="navbar" class="navbar-collapse collapse">
@@ -52,8 +44,14 @@
       </div>
     </nav>
 
+    <!-- FULLPAGE ENABLED -->
+
+    <div id="fullpage">
+
+    <!-- FIRST PAGE - MAIN POST -->
+
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div id="box-links" class="jumbotron fill">
+    <div id="box-links" class="jumbotron fill section">
       <div class="container-fluid fill">
       <div class ="row-fluid">
         <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Logistic%20Gradient%20Descent.ipynb"><h2>Logistic Regression and Optimization</h2></a>
@@ -62,14 +60,17 @@
       </div>
 
       <hr>
-      <hr>
 
-      <div class = "row-fluid">
-        <button type="button" class="btn btn-lg btn-primary" onclick="gotoPrevPosts()">Previous Posts</button>
+      <!-- DOWN ARROW -->
+
+      <div class = "row">
+
+      <p><a href="javascript:void(0);" onclick="$.fn.fullpage.moveSectionDown();"><img src="/static/images/arrow_down.png" alt="down arrow" style="width:100px; height:100px; opacity:0.7"></a>Previous Posts</p>
+
       </div>
 
-        <hr>
-        <hr>
+      <!-- FOOTER FOR MAIN POST -->
+
         <div class='fakeHr'></div>
 
          <div class="row-fluid footerstyle">
@@ -87,21 +88,28 @@
           </div>
 
       </div>
-    </div>
 
-    <div id="box1" class="container-fluid fill">
-      <!-- Example row of columns -->
+      <!-- START PREVIOUS POSTS -->
+
+    <div class="container-fluid fill section">
+    <div class="row-fluid">
     <h2>Previous Posts</h2>
+    </div>
     <hr>
+
+    <!-- A PREVIOUS POST -->
+
       <div class="row">
 
         <div class="col-md-4">
           <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/TalkPay.ipynb"><h2>Talkpay</h2></a>
           <p>A look at #talkpay and the distribution of incomes.</p>
-          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/TalkPay.ipynb"><img src="/static/images/talkpay.png" alt="talkpay" style="width:400px;height:250px"></a>
+          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/TalkPay.ipynb"><img src="/static/images/talkpay.png" alt="talkpay" style="width:500px;height:350px"></a>
         </div>
 
       </div>
+
+      <!-- FOOTER -->
 
       <hr>
 
@@ -119,18 +127,26 @@
           </div>
       <p></p>
 
+      </div>
+
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="/static/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/static/js/jquery.scrollTo.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.fullPage.js"></script>
 
     <script type="text/javascript">
-        function gotoPrevPosts(){
-          $.scrollTo('#box1', 800, { offset: -50 });
-        }
+
+        $(document).ready(function() {
+          $('#fullpage').fullpage({
+
+            anchors:['mainPost', 'previousPosts']
+
+          });
+        });
 
     </script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
