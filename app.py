@@ -2,7 +2,6 @@ from flask import Flask
 from flask import send_file
 from flask import render_template
 app = Flask(__name__)
-app._static_folder = "/Users/tylerfolkman/projects/lwd_website/static"
 
 @app.route("/")
 def index():
@@ -18,4 +17,4 @@ def resources():
     return render_template("resources.html")
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=5000,debug=True)
+    app.run(debug=True)
