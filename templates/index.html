@@ -12,7 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/static/app.css" rel="stylesheet">
-    <link href="/static/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/jquery.fullPage.css" />
 
 
@@ -51,7 +51,7 @@
     <!-- FIRST PAGE - MAIN POST -->
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div id="box-links" class="jumbotron fill section">
+    <div id="box-links" class="jumbotron fill section active">
       <div class="container-fluid fill">
       <div class ="row-fluid">
         <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Logistic%20Gradient%20Descent.ipynb"><h2>Logistic Regression and Optimization</h2></a>
@@ -91,15 +91,29 @@
 
       <!-- START PREVIOUS POSTS -->
 
-    <div class="container-fluid fill section">
-    <div class="row-fluid">
-    <h2>Previous Posts</h2>
+    <div class = "section">
+
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"
+    	style="background:white">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+  </ol>
+
+    <div class="main-text hidden-xs">
+        <div class="col-md-12 text-left">
+            <h1 style="margin-top:50px">Previous Posts</h1>
+         </div>
     </div>
-    <hr>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" style="height:700px">
+    <div class="item active">
 
     <!-- A PREVIOUS POST -->
 
-      <div class="row">
+      <div class="row-fluid">
 
         <div class="col-md-4">
           <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/TalkPay.ipynb"><h2>Talkpay</h2></a>
@@ -107,28 +121,55 @@
           <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/TalkPay.ipynb"><img src="/static/images/talkpay.png" alt="talkpay" style="width:500px;height:350px"></a>
         </div>
 
-      </div>
+    <!-- A PREVIOUS POST -->
 
-      <!-- FOOTER -->
+        <div class="col-md-4">
+          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Continuous%20Prior.ipynb"><h2>Bayes With Continuous Prior</h2></a>
+          <p>A tutorial on how to use Bayes Theorem with a continuous prior.</p>
+          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Continuous%20Prior.ipynb"><img src="/static/images/bayes_cont.png" alt="continous bayes image" style="width:450px;height:325px"></a>
+        </div>
 
-      <hr>
+    <!-- A PREVIOUS POST -->
 
-         <div class="row">
-            <div class="col-md-2">
-              <a href="https://github.com/tfolkman"><img src="/static/images/GitHub-Mark-120px-plus.png" alt="GitHub" style="width:64px;height:64px"></a>
-            </div>
-            <div class="col-md-2">
-              <a href="https://twitter.com/tyler_folkman"><img src="/static/images/Twitter_logo_blue.png" alt="Twitter" style="width:64px;height:64px"></a>
-            </div>
-            <div class="col-md-2">
-              <a href="https://www.linkedin.com/in/tylerfolkman"><img src="/static/images/LinkedIn_logo_initials.png" alt="LinkedIn" style="width:64px;height:64px"></a>
-            </div>
-          </div>
-          </div>
-      <p></p>
+        <div class="col-md-4">
+          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Bayes_Primer.ipynb"><h2>Introduction to Bayes Theorem</h2></a>
+          <p>A brief introducton to Bayes Theorem and how to use it in Python.</p>
+          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Bayes_Primer.ipynb"><img src="/static/images/bayes_intro.png" alt="bayes image" style="width:400px;height:300px"></a>
+        </div>
+        </div>
 
-      </div>
 
+    </div>
+    <div class="item">
+
+
+    <!-- NEXT ROW OF POSTS -->
+
+    <!-- A PREVIOUS POST -->
+
+    <div class="row-fluid">
+
+        <div class="col-md-4">
+          <a href="http://tfolkman.github.io/state_map/index.html"><h2>My First D3 Map</h2></a>
+          <p>I have always wanted to create a D3 map, so here is my first attempt.</p>
+          <a href="http://tfolkman.github.io/state_map/index.html"><img src="/static/images/d3_map.png" alt="d3 map" style="width:400px;height:300px"></a>
+        </div>
+
+    </div>
+
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" style="background-image:none">
+    <span class="glyphicon glyphicon-chevron-left" style="color:black" ></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" style="background-image:none">
+    <span class="glyphicon glyphicon-chevron-right" style="color:black"></span>
+  </a>
+
+
+</div> <!-- Carousel -->
 
 
     <!-- Bootstrap core JavaScript
@@ -140,10 +181,11 @@
 
     <script type="text/javascript">
 
+
         $(document).ready(function() {
           $('#fullpage').fullpage({
 
-            anchors:['mainPost', 'previousPosts']
+            anchors:['mainPost', 'previousPosts'],
 
           });
         });
