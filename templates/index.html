@@ -12,6 +12,7 @@
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link href="/static/styles.css" rel="stylesheet">
+              <link href="/static/app.css" rel="stylesheet">
 	</head>
 	<body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -29,20 +30,20 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#mostRecent">Most Recent Post</a></li>
         <li><a href="#prevPosts">Previous Posts</a></li>
-        <li><a href="#section3">Data Science Resources</a></li>
-        <li><a href="#section4">About</a></li>
+        <li><a href="#resources">Data Science Resources</a></li>
+        <li><a href="#about">About</a></li>
         <li>&nbsp;</li>
       </ul>
     </div>
   </div>
 </nav>
 
-<section class="container-fluid" id="mostRecent" style="background-color:#2b3e50">
-  	<div class="container">
-        <h1 class="text-left">Logistic Regression and Optimization</h1>
-        <h3 style="color:#c0c0c0">A tutorial on logisitic regression and how to learn the weights using optimization.</h3>
+<section class="container-fluid evenSection" id="mostRecent" >
+  	<div class="container text-center">
+        <h1>Logistic Regression and Optimization</h1>
+        <h3> A tutorial on logisitic regression and how to learn the weights using optimization.</h3>
       <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-12 text-center">
 
             <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Logistic%20Gradient%20Descent.ipynb"><img src="/static/images/log_reg.png" alt="Logistic Regression" style="width:450px;height:350px"></a>
 
@@ -52,20 +53,21 @@
   </div><!--/container-->
 </section>
 
-<section class="container-fluid" id="prevPosts">
+<section class="container-fluid oddSection" id="prevPosts">
+  <div class="container"
   <div class="row">
-  	<div class="col-sm-8 col-sm-offset-2 text-center">
-        <h1>What is Bootstrap?</h1>
-        <br>
-		<p class="lead">Bootstrap is a free collection of tools for creating websites and web applications. It contains HTML and CSS-based design templates for typography, forms, buttons, navigation and other interface components, as well as optional JavaScript extensions. It is the No.1 project on GitHub with 65,000+ stars and 23,800 forks (as of March 2014) [1] and has been used by NASA and MSNBC, among many others..</p>
-        <br> 
-      	<i style="font-size:120px" class="fa fa-camera fa-5x"></i>
-      	<p>Big 'ol Camera Icon</p>
+  	<div class="col-sm-3">
+
+          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/TalkPay.ipynb"><h2>Talkpay</h2></a>
+          <p>A look at #talkpay and the distribution of incomes.</p>
+          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/TalkPay.ipynb"><img src="/static/images/talkpay.png" alt="talkpay" style="width:500px;height:350px"></a>
+
     </div>
+  </div>
   </div>
 </section>
 
-<section class="container-fluid" id="section3">
+<section class="container-fluid" id="resources">
 	<h1 class="text-center">Bootstrap is Responsive</h1>
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
@@ -82,123 +84,9 @@
    </div>
 </section>
 
-<section class="container-fluid" id="section4">
-	<h2 class="text-center">Change this Content. Change the world.</h2>
-    <div class="row">
-      <div class="col-sm-8 col-sm-offset-2">
-      <img src="/assets/example/bg_smartphones.jpg" class="img-responsive center-block ">
-      <p class="text-center">Images will scale down proportionately as browser width narrows.</p>
-      </div>
-    </div>
 </section>
 
-<section class="container-fluid" id="section5">
-  <div class="col-sm-10 col-sm-offset-1">
-    <div class="container">
-    <div class="row">
-      <div class="col-sm-4 col-xs-12">
-            <div class="list-group">
-              <a href="#" class="list-group-item active">
-                <h2 class="list-group-item-heading">Basic</h2>
-                <h6>Free to get started</h6>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 100 - more about this</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 2 - this is more about this</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 3 GB</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 4</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Feature</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Feature</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <button class="btn btn-primary btn-lg btn-block">Get Started</button>
-              </a>
-            </div>
-      </div><!--/left-->
-      
-      <div class="col-sm-4 col-xs-12">
-            <div class="list-group text-center">
-              <a href="#" class="list-group-item active">
-                <h2 class="list-group-item-heading">Better</h2>
-                <h6>Most popular plan</h6>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 200 - more about this</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 2 - this is more about this</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 5 GB</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 6</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Feature</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Feature</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <button class="btn btn-default btn-lg btn-block">$10 per month</button>
-              </a>
-            </div>
-      </div><!--/middle-->
-      
-      <div class="col-sm-4 col-xs-12">
-            <div class="list-group text-right">
-              <a href="#" class="list-group-item active">
-                <h2 class="list-group-item-heading">Best</h2>
-                <h6>For enterprise grade</h6>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 100 - more about this</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 2 - this is more about this</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 8 GB</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Option 10</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Unlimited</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <p class="list-group-item-text">Unlimited</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <button class="btn btn-default btn-lg btn-block">$20 per month</button>
-              </a>
-            </div>
-      </div><!--/right-->
-      
-    </div><!--/row-->
-    </div><!--/container--> 
-  </div>
-</section>
-
-<section class="container-fluid" id="section6">
-	<h2 class="text-center">Do you see what I mean?</h2>
-    <p class="text-center lead">Add some compelling information here</p>
-    <img src="/assets/example/bg_iphone.png" class="img-responsive center-block ">
-    
-</section>
-
-<section class="container" id="section7">
+<section class="container" id="about">
 	<h1 class="text-center">Social Media Fascination</h1>
     <div class="row">
       <!--fontawesome icons-->
