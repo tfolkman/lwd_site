@@ -3,14 +3,10 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>Section scroller template</title>
-		<meta name="generator" content="Bootply" />
+		<title>Learning With Data</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="/static/superhero/bootstrap.min.css" rel="stylesheet">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-		<!--[if lt IE 9]>
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
 		<link href="/static/styles.css" rel="stylesheet">
               <link href="/static/app.css" rel="stylesheet">
 	</head>
@@ -24,14 +20,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Learning With Data</a>
+      <a class="navbar-brand" href="#mostRecent">Learning With Data</a>
     </div>
     <div class="navbar-collapse collapse" id="navbar-collapsible">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#mostRecent">Most Recent Post</a></li>
         <li><a href="#prevPosts">Previous Posts</a></li>
         <li><a href="#resources">Data Science Resources</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#about">About/Contact</a></li>
         <li>&nbsp;</li>
       </ul>
     </div>
@@ -45,7 +41,7 @@
       <div class="row">
           <div class="col-sm-12 text-center">
 
-            <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Logistic%20Gradient%20Descent.ipynb"><img src="/static/images/log_reg.png" alt="Logistic Regression" style="width:450px;height:350px"></a>
+            <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Logistic%20Gradient%20Descent.ipynb"><img src="/static/images/log_reg.png" alt="Logistic Regression" class="img-responsive center-block"></a>
 
 
           </div>
@@ -54,119 +50,102 @@
 </section>
 
 <section class="container-fluid oddSection" id="prevPosts">
-  <div class="container"
+  <div class="container">
   <div class="row">
-  	<div class="col-sm-3">
+    <div class="col-sm-3">
 
           <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/TalkPay.ipynb"><h2>Talkpay</h2></a>
-          <p>A look at #talkpay and the distribution of incomes.</p>
-          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/TalkPay.ipynb"><img src="/static/images/talkpay.png" alt="talkpay" style="width:500px;height:350px"></a>
+          <p class="normalText">A look at #talkpay and the distribution of incomes.</p>
+          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/TalkPay.ipynb"><img src="/static/images/talkpay.png" alt="talkpay" class="img-responsive center-block"></a>
+
+    </div>
+    <div class="col-sm-3">
+
+          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Continuous%20Prior.ipynb"><h2>Bayes With Continuous Prior</h2></a>
+          <p class="normalText">A tutorial on how to use Bayes Theorem with a continuous prior.</p>
+          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Continuous%20Prior.ipynb"><img src="/static/images/bayes_cont.png" alt="continous bayes image" class="img-responsive center-block"></a>
+
+    </div>
+    <div class="col-sm-3">
+
+          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Bayes_Primer.ipynb"><h2>Introduction to Bayes Theorem</h2></a>
+          <p class="normalText">A brief introducton to Bayes Theorem and how to use it in Python.</p>
+          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Bayes_Primer.ipynb"><img src="/static/images/bayes_intro.png" alt="bayes image" class="img-responsive center-block"></a>
+
+    </div>
+    <div class="col-sm-3">
+
+          <a href="http://tfolkman.github.io/state_map/index.html"><h2>My First D3 Map</h2></a>
+          <p class="normalText">I have always wanted to create a D3 map, so here is my first attempt.</p>
+          <a href="http://tfolkman.github.io/state_map/index.html"><img src="/static/images/d3_map.png" alt="d3 map" class="img-responsive center-block"></a>
 
     </div>
   </div>
   </div>
 </section>
 
-<section class="container-fluid" id="resources">
-	<h1 class="text-center">Bootstrap is Responsive</h1>
+<section class="container-fluid evenSection" id="resources">
+  <div class="container">
     <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <h3 class="text-center">Vertical scrolling has become a popular and lasting trend in Web design.</h3>
-        <div class="row">
-          <div class="col-xs-4 col-xs-offset-1">Some brand-tacular designs even have home page content that is taller that 12,000 pixels. That's a lotta content.</div>
-          <div class="col-xs-2"></div>
-          <div class="col-xs-4 text-right">Anyhoo, this is just some random blurb of text, and Bootply.com is a playground and code editor for Bootstrap.</div>
-        </div>
-        <p class="text-center">
-          <img src="/assets/example/img_mtnpeople.png" class="img-responsive center-block ">
-        </p>
+      <h1 class="text-left">Getting Started</h1>
+
+      <div class="col-sm-3">
+
+          <a href="http://continuum.io/downloads"><h2>Anaconda Distribution</h2></a>
+          <p>Get Python and the Anaconda distribution which includes almost all of the libraries you will need to get started. </p>
+              <a href="http://continuum.io/downloads"><img src="/static/images/continuum_analytics_logo.png" alt="Anaconda" class="img-responsive center-block"></a>
+
+      </div>
+
+      <div class="col-sm-3">
+
+          <a href="http://ipython.org/"><h2>IPython</h2></a>
+          <p>Learn about IPython and IPython Notebooks.</p>
+              <a href="http://ipython.org/"><img src="/static/images/IPy_header.png" alt="IPython" class="img-responsive center-block"></a>
+
+      </div>
+
+      <div class="col-sm-3">
+
+          <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Python_For_Data_Mining.ipynb"><h2>Python For Data Mining</h2></a>
+          <p>Read my introduction post on how to use Python for data mining.</p>
+              <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Python_For_Data_Mining.ipynb"><img src="/static/images/python_dm.png" alt="Python for Data Mining" class="img-responsive center-block"></a>
+
+      </div>
       </div>
    </div>
 </section>
 
 </section>
 
-<section class="container" id="about">
-	<h1 class="text-center">Social Media Fascination</h1>
-    <div class="row">
+<section class="container-fluid oddSection" id="about">
+  <div class="container">
+	<h1 class="text-left orangeText">Hello</h1>
+
+        <h2 class="normalText">
+          
+          My name is Tyler Folkman and I am currently pursuing my masters in computer science at UT Austin with a focus on machine learning and data mining. I am doing research at the intersection of healthcare and data mining as a member of the <a href="http://www.ideal.ece.utexas.edu/">IDEAL lab</a> and am interning at Amazon this summer in the ad products group.<br><br>
+
+          I hope to use data science to do some good in the world and plan on posting some tutorials as well as my data driven side projects.<br><br>
+
+          If you like my blog, or have any suggestions/comments/anything..., I would love to hear from you! Email me at learningwithdata-at-gmail-dot-com.<br><br>
+
+          Have a good one!  
+
+        </h2>
+    <div class="row top-buffer">
       <!--fontawesome icons-->
-      <div class="col-sm-1 col-sm-offset-2 col-xs-4 text-center">
-       <i class="fa fa-github fa-4x"></i>
+      <div class="col-sm-2">
+       <a href="https://github.com/tfolkman"><i class="fa fa-github fa-4x orangeText"></i></a>
       </div>
-      <div class="col-sm-1 col-xs-4 text-center">
-       <i class="fa fa-foursquare fa-4x"></i>
+      <div class="col-sm-2">
+       <a href="https://twitter.com/tyler_folkman"><i class="fa fa-twitter fa-4x orangeText"></i></a>
       </div>
-      <div class="col-sm-1 col-xs-4 text-center">
-       	<i class="fa fa-facebook fa-4x"></i>
-      </div>
-      <div class="col-sm-1 col-xs-4 text-center">
-       <i class="fa fa-pinterest fa-4x"></i>
-      </div>
-      <div class="col-sm-1 col-xs-4 text-center">
-       <i class="fa fa-google-plus fa-4x"></i>
-      </div>
-      <div class="col-sm-1 col-xs-4 text-center">
-       <i class="fa fa-twitter fa-4x"></i>
-      </div>
-      <div class="col-sm-1 col-xs-4 text-center">
-       <i class="fa fa-dribbble fa-4x"></i>
-      </div>
-      <div class="col-sm-1 col-xs-4 text-center">
-       <i class="fa fa-instagram fa-4x"></i>
+      <div class="col-sm-2">
+        <a href="https://www.linkedin.com/in/tylerfolkman"><i class="fa fa-linkedin fa-4x orangeText"></i></a>
       </div>
   </div><!--/row-->
-  <div class="row">
-  	<div class="col-md-12 text-center">
-      <br><br>
-      <p>
-    	<a href="http://www.bootstrapzero.com/bootstrap-template/sectionalize">Get the code for this template.</a>
-      </p>
-    </div>
-  </div>
 </section>
-
-<footer id="footer">
-  <div class="container">
-    <div class="row">    
-      <div class="col-xs-6 col-sm-6 col-md-3 column">          
-          <h4>Information</h4>
-          <ul class="nav">
-            <li><a href="about-us.html">Products</a></li>
-            <li><a href="about-us.html">Services</a></li>
-            <li><a href="about-us.html">Benefits</a></li>
-            <li><a href="elements.html">Developers</a></li>
-          </ul> 
-        </div>
-      <div class="col-xs-6 col-md-3 column">          
-          <h4>Follow Us</h4>
-          <ul class="nav">
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Google+</a></li>
-            <li><a href="#">Pinterest</a></li>
-          </ul> 
-      </div>
-      <div class="col-xs-6 col-md-3 column">          
-          <h4>Contact Us</h4>
-          <ul class="nav">
-            <li><a href="#">Email</a></li>
-            <li><a href="#">Headquarters</a></li>
-            <li><a href="#">Management</a></li>
-            <li><a href="#">Support</a></li>
-          </ul> 
-      </div>
-      <div class="col-xs-6 col-md-3 column">          
-          <h4>Customer Service</h4>
-          <ul class="nav">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Delivery Information</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms &amp; Conditions</a></li>
-          </ul> 
-      </div>
-    </div><!--/row-->
-  </div>
-</footer>
 
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>

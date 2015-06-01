@@ -7,5 +7,15 @@ h3 {
 }
 
 .oddSection{
-  background-color: #cccccc;
+  background-color: #ffffff;
 }
+
+.normalText{
+  color:#444444;
+}
+
+.orangeText {
+  color:#df691a;
+}
+
+.top-buffer { margin-top:40px; }
