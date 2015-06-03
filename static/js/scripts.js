@@ -1,11 +1,13 @@
 
-$(document).ready(function(){/* activate scrollspy menu */
+$(document).ready(function(){// activate scrollspy menu //
+	
 $('body').scrollspy({
   target: '#navbar-collapsible',
-  offset: 50
+  offset: 36
 });
 
-/* smooth scrolling sections */
+
+// smooth scrolling sections //
 $('a[href*=#]:not([href=#])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);

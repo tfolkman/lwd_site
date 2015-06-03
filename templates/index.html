@@ -8,14 +8,14 @@
 		<link href="/static/superhero/bootstrap.min.css" rel="stylesheet">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link href="/static/styles.css" rel="stylesheet">
-              <link href="/static/app.css" rel="stylesheet">
-              <meta name="google-site-verification" content="52VMDVM1cZ99asJ22QcATqCvKma0qND-sXbcc1suZbo" />
+    <link href="/static/app.css" rel="stylesheet">
+    <meta name="google-site-verification" content="52VMDVM1cZ99asJ22QcATqCvKma0qND-sXbcc1suZbo" />
 	</head>
 	<body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -112,10 +112,25 @@
   </div>
 
   </div>
-</section>
+</section> <!-- END PREV POSTS -->
 
 <section class="container-fluid evenSection" id="resources">
+
   <div class="container">
+  <div class="row">
+    <div class="col-sm-2"> 
+      <a href="#resources">Getting Started</a>
+    </div>
+    <div class="col-sm-2">
+      <a href="#online">Online Courses</a>
+    </div>  
+    <div class="col-sm-2">
+      <a href="#sites">Sites</a>
+    </div>  
+    <div class="col-sm-2">
+      <a href="#podcasts">Podcasts</a>
+    </div>  
+</div>
     <div class="row">
       <h1 class="text-left">Getting Started</h1>
 
@@ -143,10 +158,104 @@
 
       </div>
       </div>
-   </div>
-</section>
+      </div>
+  </section> <!-- END GETTING STARTED -->
 
-</section>
+<section class="container-fluid evenSection" id="online">
+  <div class="container">
+    <div class="row">
+      <h1 class="text-left">Online Courses</h1>
+
+      <div class="col-sm-3">
+
+          <a href="https://www.coursera.org/course/ml"><h2>Coursera Machine Learning</h2></a>
+          <p>This excellent course is probably the most popular. Taught by Andrew Ng who is now the Chief Scientist at Baidu; great coverage of topics. I would definitely recommend starting here for online learning.</p>
+              <a href="https://www.coursera.org/course/ml"><img src="/static/images/coursera_ml.png" alt="coursera-ml" class="img-responsive center-block"></a>
+
+      </div>
+
+      <div class="col-sm-3">
+
+          <a href="http://cs109.github.io/2014/"><h2>Harvard Data Science</h2></a>
+          <p>I love this course because it uses Python. Also has a good coverage of topics and a great github repo of code. Great place to learn data science using Python.</p>
+              <a href="http://cs109.github.io/2014/"><img src="/static/images/harvard_ds.jpg" alt="harvard ds" class="img-responsive center-block"></a>
+
+      </div>
+    </div>
+    </div>
+    </section> <!-- END ONLINE -->
+
+
+<section class="container-fluid evenSection" id="sites">
+  <div class="container">
+    <div class="row">
+     <h1 class="left text">Sites</h1>
+
+     <div class="col-sm-3">
+
+          <a href="http://blog.yhathq.com/"><h2>Yhat Blog</h2></a>
+          <p>The Yhat blog always seems to have awesome articles on data science. Great place to learn and see some cool projects.</p>
+              <a href="http://blog.yhathq.com/"><img src="/static/images/yhat.png" alt="yhat" class="img-responsive center-block"></a>
+
+     </div> 
+
+     <div class="col-sm-3">
+
+          <a href="http://www.datatau.com/"><h2>DataTau</h2></a>
+          <p>DataTau is like the Hacker News of data science. The site isn't nearly as active as Hacker News, but often has some nice posts. Would be cool to help it to continue to grow.</p>
+
+     </div> 
+
+     <div class="col-sm-3">
+
+          <a href="http://bost.ocks.org/mike/"><h2>Mike Bostock</h2></a>
+          <p>One of the developers of D3.js - this guy is the king of interactive visualization. Check out his stuff and be amazed. He also posts amazing tutorials.</p>
+              <a href="http://bost.ocks.org/mike/"><img src="/static/images/mike_b.png" alt="bostock" class="img-responsive center-block"></a>
+
+     </div> 
+
+     <div class="col-sm-3">
+
+          <a href="http://twiecki.github.io/"><h2>While My MCMC Gently Samples</h2></a>
+          <p>Thomas Wiecki is very skilled at writing tutorials. Focuses mostly on Python and Bayesian methods; best place to learn how to use Python for Bayesian statistics.</p>
+              <a href="http://twiecki.github.io/"><img src="/static/images/mcmc.png" alt="mcmc" class="img-responsive center-block"></a>
+
+     </div> 
+    </div> 
+    </div> 
+    </section> <!-- END SITES -->
+
+<section class="container-fluid evenSection" id="podcasts">
+  <div class="container">
+    <div class="row">
+     <h1 class="left text">Podcasts</h1>
+
+     <div class="col-sm-3">
+
+          <a href="http://www.partiallyderivative.com/"><h2>Partially Derivative</h2></a>
+          <p>Great podcast that covers data science news of the week in a very entertaining fashion. Great way to keep up with data related stories.</p>
+              <a href="http://www.partiallyderivative.com/"><img src="/static/images/partiallyd.png" alt="partiallyd" class="img-responsive center-block"></a>
+
+     </div> 
+
+     <div class="col-sm-3">
+
+          <a href="http://www.thetalkingmachines.com/"><h2>Talking Machines</h2></a>
+          <p>A podcast focused more on machine learning research. Some great interviews with leading researchers.</p>
+              <a href="http://www.thetalkingmachines.com/"><img src="/static/images/talkingmachines.png" alt="talkingmachines" class="img-responsive center-block"></a>
+
+     </div> 
+
+     <div class="col-sm-3">
+
+          <a href="http://radar.oreilly.com/tag/oreilly-data-show-podcast"><h2>O'Reilly Data Show</h2></a>
+          <p>Tends to focus on interviews with people from industry. Provides some great insights into how data science is being used in industry.</p>
+              <a href="http://radar.oreilly.com/tag/oreilly-data-show-podcast"><img src="/static/images/datashow.png" alt="datashow" class="img-responsive center-block"></a>
+
+     </div> 
+    </div>
+    </div>
+</section> <!-- END PODCASTS -->
 
 <section class="container-fluid oddSection" id="about">
   <div class="container">
