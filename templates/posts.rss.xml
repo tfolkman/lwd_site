@@ -6,6 +6,11 @@
 	<link>http://learningwithdata.com</link>
 	<atom:link href="http://learningwithdata.com/posts.rss.xml" rel="self"/>
 	<item>
+		<title>Data Science Resources TOO</title>
+		<link>http://www.learningwithdata.com/resources/</link>
+		<description>A page of data science resources including books and online courses. Plus many more.</description>
+	</item>
+	<item>
 		<title>Logistic Regression and Optimization</title>
 		<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Logistic%20Gradient%20Descent.ipynb</link>
 		<description>Introduction to Logistic regression and using optimization to learn the weights using Python.</description>
@@ -47,11 +52,6 @@
 	</item>
 	<item>
 		<title>Data Science Resources</title>
-		<link>http://www.learningwithdata.com/resources/</link>
-		<description>A page of data science resources including books and online courses. Plus many more.</description>
-	</item>
-	<item>
-		<title>Data Science Resources TOO</title>
 		<link>http://www.learningwithdata.com/resources/</link>
 		<description>A page of data science resources including books and online courses. Plus many more.</description>
 	</item>
