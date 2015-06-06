@@ -4,6 +4,7 @@
 	<title>Learning With Data</title>
 	<description>Data science website of Tyler Folkman with my personal projects and data science resources</description>
 	<link>http://learningwithdata.com</link>
+	<atom:link href="http://learningwithdata.com/posts.rss.xml" rel="self"/>
 	<item>
 		<title>Logistic Regression and Optimization</title>
 		<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Logistic%20Gradient%20Descent.ipynb</link>
