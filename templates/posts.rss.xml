@@ -6,7 +6,7 @@
 	<item>
 		<title>Logistic Regression and Optimization</title>
 		<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Logistic%20Gradient%20Descent.ipynb</link>
-		<description></description>
+		<description>Introduction to Logistic regression and using optimization to learn the weights using Python.</description>
 	</item>
 	<item>
 		<title>Talkpay</title>
@@ -46,7 +46,7 @@
 	<item>
 		<title>Data Science Resources</title>
 		<link>www.learningwithdata.com/resources/</link>
-		<description>A page of data science resources including sites, books, podcasts, and more.</description>
+		<description>A page of data science resources including books and online courses. Plus many more.</description>
 	</item>
 </channel>
 </rss>
