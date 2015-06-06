@@ -43,5 +43,10 @@
 		<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Top_Offensive_Tackles.ipynb</link>
 		<description>I take a look at my brother's chances of playing college football.</description>
 	</item>
+	<item>
+		<title>Data Science Resources</title>
+		<link>www.learningwithdata.com/resources/</link>
+		<description>A page of data science resources including sites, books, podcasts, and more.</description>
+	</item>
 </channel>
 </rss>
