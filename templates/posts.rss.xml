@@ -1,0 +1,47 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+	<title>Learning With Data</title>
+	<description>Data science website of Tyler Folkman with my personal projects and data science resources</description>
+	<link>http://learningwithdata.com</link>
+	<item>
+		<title>Logistic Regression and Optimization</title>
+		<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Logistic%20Gradient%20Descent.ipynb</link>
+		<description></description>
+	</item>
+	<item>
+		<title>Talkpay</title>
+		<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/TalkPay.ipynb</link>
+		<description>A look at #talkpay and the distribution of incomes.</description>
+	</item>
+	<item>
+		<title>Bayes With Continuous Prior</title>
+		<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Continuous%20Prior.ipynb</link>
+		<description>A tutorial on how to use Bayes Theorem with a continuous prior.</description>
+	</item>
+	<item>
+		<title>Introduction to Bayes Theorem</title>
+		<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Bayes_Primer.ipynb</link>
+		<description>A brief introducton to Bayes Theorem and how to use it in Python.</description>
+	</item>
+	<item>
+		<title>My First D3 Map</title>
+		<link>http://tfolkman.github.io/state_map/index.html</link>
+		<description>I have always wanted to create a D3 map, so here is my first attempt.</description>
+	</item>
+	<item>
+		<title>MIMIC Data</title>
+		<link>http://nbviewer.ipython.org/github/tfolkman/mimic_data/blob/master/Getting_Started_with_MIMIC_Demo.ipynb</link>
+		<description>Learn how to start analyzing a very rich healthcare dataset of Intensive Care Unit patients.</description>
+	</item>
+	<item>
+		<title>Python for Data Mining</title>
+		<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Python_For_Data_Mining.ipynb</link>
+		<description>Tutorial on how to use Python for data mining.</description>
+	</item>
+	<item>
+		<title>High School Offensive Tackles</title>
+		<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Top_Offensive_Tackles.ipynb</link>
+		<description>I take a look at my brother's chances of playing college football.</description>
+	</item>
+</channel>
+</rss>
