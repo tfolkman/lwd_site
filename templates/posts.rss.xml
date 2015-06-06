@@ -8,6 +8,7 @@
 		<title>Logistic Regression and Optimization</title>
 		<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Logistic%20Gradient%20Descent.ipynb</link>
 		<description>Introduction to Logistic regression and using optimization to learn the weights using Python.</description>
+		<img><url>http://learningwithdata.com/static/images/log_reg.png</url></img>
 	</item>
 	<item>
 		<title>Talkpay</title>
