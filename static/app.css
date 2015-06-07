@@ -23,3 +23,13 @@ h3 {
 .grayText{
   color: #c0c0c0;
 }
+
+.chart-size {
+	min-width: 310px; 
+	height: 400px; 
+	margin-right: auto;
+}
+
+.nav-buffer {
+	margin-top: 100px;
+}

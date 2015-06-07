@@ -11,9 +11,9 @@ def index():
 def resources():
     return render_template("resources.html")
 
-@app.route("/posts.rss.xml/")
-def posts_rss():
-    return render_template("posts.rss.xml")
+@app.route("/nfl/")
+def nfl():
+    return render_template("historical_nfl_rankings.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
