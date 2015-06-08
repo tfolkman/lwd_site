@@ -33,3 +33,7 @@ h3 {
 .nav-buffer {
 	margin-top: 100px;
 }
+
+.ui-widget-header{
+  width: 100%;
+}

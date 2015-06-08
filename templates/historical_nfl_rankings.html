@@ -8,6 +8,7 @@
 		<link href="/static/superhero/bootstrap.min.css" rel="stylesheet">
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 		<link href="/static/styles.css" rel="stylesheet">
+		<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
     <link href="/static/app.css" rel="stylesheet">
     <meta name="google-site-verification" content="52VMDVM1cZ99asJ22QcATqCvKma0qND-sXbcc1suZbo" />
 	</head>
@@ -41,13 +42,14 @@
 	<div class="row">
 
 		<div class="col-sm-2">
-		<form>
-			<select class="form-control">
-    			<option>Mustard</option>
-    			<option>Ketchup</option>
-    			<option>Relish</option>
-  			</select>
-  			</form>
+
+			<select class="select" style="width:100%">
+
+				<option value="49ers">49ers</option>
+				<option value="Seahawks">Seahawks</option>
+
+			</select>
+
 		</div>
 
 		<div class="col-sm-10">
@@ -62,6 +64,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 	<script src="/static/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
 	<script src="/static/js/scripts.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 	<script src="/static/js/highcharts.js"></script>	
 	<script src="/static/js/custom_charts.js"></script>
 	<script type="text/javascript">
@@ -84,6 +87,11 @@
 
 	</script>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	<script type="text/javascript">
+  		$('select').select2({
+  			placeholder: "Select a Team",
+  		});
+	</script>	
 
 	</body>
 </html>
