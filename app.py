@@ -2,8 +2,16 @@ from flask import Flask
 from flask import send_file
 from flask import render_template
 from flask import request
+import logging
 
 app = Flask(__name__)
+
+logger = logging.getLogger('lwd')
+hdlr = logging.FileHandler('./logs/flask/lwd.log')
+formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+hdlr.setFormatter(formatter)
+logger.addHandler(hdlr) 
+logger.setLevel(logging.WARNING)
 
 @app.route("/")
 def index():
