@@ -3,15 +3,10 @@ from flask import send_file
 from flask import render_template
 from flask import request
 import logging
+from logging.handlers import RotatingFileHandler
 
 app = Flask(__name__)
-
-logger = logging.getLogger('lwd')
-hdlr = logging.FileHandler('./logs/flask/lwd.log')
-formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-hdlr.setFormatter(formatter)
-logger.addHandler(hdlr) 
-logger.setLevel(logging.WARNING)
+app.config['PROPAGATE_EXCEPTIONS'] = True
 
 @app.route("/")
 def index():
@@ -23,6 +18,7 @@ def resources():
 
 @app.route("/nfl/", methods=['GET', 'POST'])
 def nfl():
+	app.logger.warning("TESTING")
 	import psycopg2
 
 	try:
@@ -67,6 +63,19 @@ def nfl_team():
 	curr_team = request.form['team']
 	return render_template("index.html")
 
+@app.errorhandler(404)
+def error_handler(error):
+    app.logger.warning(error)
+
+@app.errorhandler(500)
+def error_handler(error):
+    app.logger.warning(error)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+	handler = RotatingFileHandler('./logs/flask/lwd.log', maxBytes=10000, backupCount=1)
+	handler.setLevel(logging.DEBUG)
+	formatter = logging.Formatter( "%(asctime)s | %(pathname)s:%(lineno)d | %(funcName)s | %(levelname)s | %(message)s ")
+	handler.setFormatter(formatter)
+	app.logger.addHandler(handler)
+	app.logger.setLevel(logging.DEBUG)
+	app.run()
