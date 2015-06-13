@@ -6,7 +6,6 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 app = Flask(__name__)
-app.config['PROPAGATE_EXCEPTIONS'] = True
 
 @app.route("/")
 def index():
@@ -18,7 +17,6 @@ def resources():
 
 @app.route("/nfl/", methods=['GET', 'POST'])
 def nfl():
-	app.logger.warning("TESTING")
 	import psycopg2
 
 	try:
@@ -57,11 +55,6 @@ def nfl():
 		d_rk.append(row[0])
 
 	return render_template("historical_nfl_rankings.html", team_names=names, name=name, o_data_years=year, o_data_rk=rk, d_data_rk=d_rk)
-
-@app.route("/nfl_team/", methods=['GET', 'POST'])
-def nfl_team():
-	curr_team = request.form['team']
-	return render_template("index.html")
 
 @app.errorhandler(404)
 def error_handler(error):
