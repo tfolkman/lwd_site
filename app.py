@@ -18,7 +18,7 @@ def nfl():
 	import psycopg2
 
 	try:
-	    conn=psycopg2.connect("dbname='nfl_football' host='localhost'")
+	    conn=psycopg2.connect("dbname=nfl_football user=deploy")
 	except:
 	    print "I am unable to connect to the database."
 	    
