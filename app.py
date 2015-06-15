@@ -47,7 +47,7 @@ def nfl():
 	for row in rows:
 		rk.append(row[0])
 		year.append(row[1])
-	cmd = "select rk from def_regseason_gamestats where team like (%s) order by year;"
+	cmd = "select rk from def_rev_regseason_gamestats where team like (%s) order by year;"
 	cur.execute(cmd, (name, ))
 	rows = cur.fetchall()
 	d_rk = []
@@ -71,4 +71,4 @@ if __name__ == "__main__":
 	handler.setFormatter(formatter)
 	app.logger.addHandler(handler)
 	app.logger.setLevel(logging.DEBUG)
-	app.run()
+	app.run(debug=True)

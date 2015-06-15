@@ -2,3 +2,4 @@ app_o.py
 venv/
 logs/
 *.sql
+todo.txt

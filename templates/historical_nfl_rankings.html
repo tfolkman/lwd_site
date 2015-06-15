@@ -67,8 +67,9 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<h2 class="orangeText">Notes</h2>
-			<p style="color:black">Lower ranking is better for offense (1 is best).</p>
-			<p style="color:black">Higher ranking is better for defense (Since 2002, 32 is best).</p>
+			<p style="color:black">Lower ranking is better (1 is best).</p>
+			<p style="color:black">Ranking based on average yards per game.</p>
+			<p style="color:black">Data from 1970 to 2014 for regular season games.</p>
 		</div>
 	</div>
 
@@ -125,7 +126,8 @@
 		                value: 0,
 		                width: 1,
 		                color: '#808080'
-		            }]
+		            }],
+		            min: 0
 		        },
 		        legend: {
 		            layout: 'vertical',
@@ -135,9 +137,11 @@
 		        },
 		        series: [{
 		            name: 'Offensive Ranking',
+		            color: '#0571b0',
 		            data: {{ o_data_rk }}
 		        	}, {
 		            name: 'Defensive Ranking',
+		            color: '#ca0020',
 		            data: {{ d_data_rk }}
 		        }],
 		        credits: {
