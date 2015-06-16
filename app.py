@@ -65,7 +65,7 @@ def error_handler(error):
 def error_handler(error):
     app.logger.warning(error)
 
-@app.route("/robots.txt/")
+@app.route('/robots.txt')
 def static_from_root():
 	    return send_from_directory(app.static_folder, request.path[1:])
 
@@ -76,4 +76,4 @@ if __name__ == "__main__":
 	handler.setFormatter(formatter)
 	app.logger.addHandler(handler)
 	app.logger.setLevel(logging.DEBUG)
-	app.run(debug=True)
+	app.run()
