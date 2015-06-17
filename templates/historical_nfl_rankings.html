@@ -1,154 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="utf-8">
-		<title>Learning With Data</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="/static/superhero/bootstrap.min.css" rel="stylesheet">
-		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-		<link href="/static/styles.css" rel="stylesheet">
-		<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Learning With Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/static/superhero/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/styles.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
     <link href="/static/app.css" rel="stylesheet">
     <meta name="google-site-verification" content="52VMDVM1cZ99asJ22QcATqCvKma0qND-sXbcc1suZbo" />
-	</head>
-	<body>
+</head>
 
-	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-	  <div class="container">
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible" aria-expanded="false" aria-controls="navbar">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	      <a class="navbar-brand" href="/">Learning With Data</a>
-	    </div>
-	    <div class="navbar-collapse collapse" id="navbar-collapsible">
-	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="/">Blog</a></li>
-	        <li><a href="/resources/">Data Science Resources</a></li>
-	        <li>&nbsp;</li>
-	      </ul>
-	    </div>
-	  </div>
-	</nav>
-	
-	<div class="container">
-
-	<div class="row">
-
-		<div class="col-sm-12">
-
-			<form action="{{ url_for('nfl') }}" method="POST" class="form-inline">
-
-				<select class="select" style="width:50%" name='team'>
-
-					{% for o in team_names %}
-    					<option value="{{ o }}" style="color: black">{{ o }}</option>
-					{% endfor %}
-
-				</select>
-				<button type="submit" class="btn btn-default btn-sm">Submit</button>
-
-			</form>
-
-		</div>
-	</div>
-	<div class="row top-buffer">
-		<div class="col-sm-12">
-
-			<div id="nfl-chart" class="chart-size"></div>	
-
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-sm-12">
-			<h2 class="orangeText">Notes</h2>
-			<p style="color:black">Lower ranking is better (1 is best).</p>
-			<p style="color:black">Ranking based on average yards per game.</p>
-			<p style="color:black">Data from 1970 to 2014 for regular season games.</p>
-		</div>
-	</div>
-
-	</div>	
-
-	<!-- script references -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-	<script src="/static/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
-	<script src="/static/js/scripts.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-	<script src="/static/js/highcharts.js"></script>	
-	<script type="text/javascript">
-
-	    $('.navbar-collapse a').click(function(){
-	      $(".navbar-collapse").collapse('hide');
-	    });
-
-	</script>
-
-	<script>
-
-	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	    ga('create', 'UA-63651150-1', 'auto');
-	    ga('send', 'pageview');
-
-	</script>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-	<script type="text/javascript">
-  		$('select').select2({
-  			placeholder: "Select a Team"
-  		});
-  		$("select").select2("val", "{{ name }}");
-	</script>	
-	<script type="text/javascript">
-
-		$(document).ready(function () {
-		    $('#nfl-chart').highcharts({
-		        title: {
-		            text: '{{ name }}',
-		            x: -20 //center
-		        },
-		        xAxis: {
-            		categories: {{ o_data_years }}
-        		},
-		        yAxis: {
-		            title: {
-		                text: 'Ranking'
-		            },
-		            plotLines: [{
-		                value: 0,
-		                width: 1,
-		                color: '#808080'
-		            }],
-		            min: 0
-		        },
-		        legend: {
-		            layout: 'vertical',
-		            align: 'center',
-		            verticalAlign: 'bottom',
-		            borderWidth: 0
-		        },
-		        series: [{
-		            name: 'Offensive Ranking',
-		            color: '#0571b0',
-		            data: {{ o_data_rk }}
-		        	}, {
-		            name: 'Defensive Ranking',
-		            color: '#ca0020',
-		            data: {{ d_data_rk }}
-		        }],
-		        credits: {
-		      		enabled: false
-		  		}
-		    });
-		});
-	</script>
+<body>
+	<!--NAVIGATION BAR-->
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Learning With Data</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-collapsible">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">Blog</a></li>
+                    <li><a href="/resources/">Data Science Resources</a></li>
+                    <li>&nbsp;</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+	    <!--SELECT 2-->
+        <div class="row">
+            <div class="col-sm-12">
+                <form action="{{ url_for('nfl_historical_rankings') }}" method="POST" class="form-inline">
+                    <select class="select" style="width:50%" name='team'>
+                        {% for o in team_names %}
+                        <option value="{{ o }}" style="color: black">{{ o }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-default btn-sm">Submit</button>
+                </form>
+            </div>
+        </div>
+        <!--CHART-->
+        <div class="row top-buffer">
+            <div class="col-sm-12">
+                <div id="nfl-chart" class="chart-size"></div>
+            </div>
+        </div>
+        <!--NOTES-->
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="orangeText">Notes</h2>
+                <p style="color:black">Lower ranking is better (1 is best).</p>
+                <p style="color:black">Ranking based on average yards per game.</p>
+                <p style="color:black">Data from 1970 to 2014 for regular season games.</p>
+            </div>
+        </div>
+    </div>
+    <!-- script references -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="/static/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script src="/static/js/scripts.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script src="/static/js/highcharts.js"></script>
+    <script src="/static/js/exporting.js"></script>
+    <script type="/static/js/global_scripts.js"></script>
+    <script type="text/javascript">
+    $('select').select2({
+        placeholder: "Select a Team"
+    });
+    $("select").select2("val", "{{ name }}");
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#nfl-chart').highcharts({
+            title: {
+                text: '{{ name }}',
+                x: -20 //center
+            },
+            xAxis: {
+                categories: {{ o_data_years }}
+            },
+            yAxis: {
+                title: {
+                    text: 'Ranking'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }],
+                min: 0
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'center',
+                verticalAlign: 'bottom',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Offensive Ranking',
+                color: '#0571b0',
+                data: {{ o_data_rk }}
+            }, {
+                name: 'Defensive Ranking',
+                color: '#ca0020',
+                data: {{ d_data_rk }}
+            }],
+            credits: {
+                enabled: false
+            }
+        });
+    });
+    </script>
 </body>
+
 </html>
