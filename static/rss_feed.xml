@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="iso-8859-1"?> 
+<rss version="2.0">
+
+<channel>
+
+<title>Learning with Data</title>
+<item>
+<title>Spark DataFrames</title>
+<description><![CDATA[ Getting started with Spark using IPython notebook and Spark DataFrames]]></description>
+<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Getting_Started_With_Spark_DataFrame.ipynb</link>
+</item><item>
+<title>Historical NFL Rankings</title>
+<description><![CDATA[ Visualize your NFL Team's Historical Offensive and Defensive Rankings]]></description>
+<link>http://learningwithdata.com/nfl_historical_rankings/</link>
+</item><item>
+<title>Logistic Regression and Optimization</title>
+<description><![CDATA[ A tutorial on logistic regression and how to learn the weights using optimization.]]></description>
+<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Logistic%20Gradient%20Descent.ipynb</link>
+</item><item>
+<title>Talkpay</title>
+<description><![CDATA[ A look at #talkpay and the distribution of incomes.]]></description>
+<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/TalkPay.ipynb</link>
+</item><item>
+<title>Bayes with Continuous Prior</title>
+<description><![CDATA[ A tutorial on how to use Bayes Theorem with a continuous prior.]]></description>
+<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Continuous%20Prior.ipynb</link>
+</item><item>
+<title>Introduction to Bayes Theorem</title>
+<description><![CDATA[ A brief introduction to Bayes Theorem and how to use it in Python.
+]]></description>
+<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Bayes_Primer.ipynb</link>
+</item><item>
+<title>My First D3 Map</title>
+<description><![CDATA[ I have always wanted to create a D3 map, so here is my first attempt.]]></description>
+<link>http://tfolkman.github.io/state_map/index.html</link>
+</item><item>
+<title>MIMIC Data</title>
+<description><![CDATA[ Learn how to start analyzing a very rich healthcare dataset of Intensive Care Unit patients.]]></description>
+<link>http://nbviewer.ipython.org/github/tfolkman/mimic_data/blob/master/Getting_Started_with_MIMIC_Demo.ipynb</link>
+</item><item>
+<title>Python For Data Mining</title>
+<description><![CDATA[ Tutorial on how to use Python for data mining]]></description>
+<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Python_For_Data_Mining.ipynb</link>
+</item><item>
+<title>High School Offensive Tackles</title>
+<description><![CDATA[ I take a look at my brother's chances of playing college football.]]></description>
+<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Top_Offensive_Tackles.ipynb</link>
+</item></channel>
+
+</rss>

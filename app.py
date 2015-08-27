@@ -16,6 +16,10 @@ def index():
 def resources():
     return render_template("resources.html")
 
+@app.route("/rss_feed.xml")
+def feed():
+	return send_from_directory(app.static_folder, request.path[1:])
+
 @app.route("/nfl_historical_rankings/", methods=['GET', 'POST'])
 def nfl_historical_rankings():
 	import psycopg2
