@@ -5,6 +5,10 @@
 
 <title>Learning with Data</title>
 <item>
+<title>Data Science Resources</title>
+<description><![CDATA[ A collection of data science resources including books, online courses, and websites]]></description>
+<link>http://learningwithdata.com/resources/</link>
+</item><item>
 <title>Spark DataFrames</title>
 <description><![CDATA[ Getting started with Spark using IPython notebook and Spark DataFrames]]></description>
 <link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Getting_Started_With_Spark_DataFrame.ipynb</link>
