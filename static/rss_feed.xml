@@ -5,6 +5,11 @@
 
 <title>Learning with Data</title>
 <item>
+<title>Fantasy Football</title>
+<description><![CDATA[ A look at how players in the NFL are performing relative to their fantasy football projections.]]></description>
+<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Biggest_Misses.ipynb</link>
+<pubDate>Wed, 30 Sep 2015 23:30:00 CST</pubDate>
+</item><item>
 <title>Data Science Resources</title>
 <description><![CDATA[ A collection of data science resources including books, online courses, and websites]]></description>
 <link>http://learningwithdata.com/resources/</link>
