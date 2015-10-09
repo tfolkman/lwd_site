@@ -5,17 +5,69 @@ from flask import request
 from flask import send_from_directory
 from app import app
 
+
 @app.route("/")
 def index():
-    return render_template("index.html")
+	sections = [
+		{
+			'href': '#mostRecent',
+			'name': 'Most Recent Post'
+		},
+		{
+			'href': '#prevPosts',
+			'name': 'Previous Posts'
+		},
+		{
+			'href': '#about',
+			'name': 'About/Contact'
+		},
+		{
+			'href': '/resources/',
+			'name': 'Data Science Resources'
+		}
+	]
+	return render_template("index.html", title='Learning With Data', sections=sections)
+
 
 @app.route("/resources/")
 def resources():
-    return render_template("resources.html")
+	sections = [
+		{
+			'href': '#gettingStarted',
+			'name': 'Getting Started'
+		},
+		{
+			'href': '#online',
+			'name': 'Online Courses'
+		},
+		{
+			'href': '#sites',
+			'name': 'Websites'
+		},
+		{
+			'href': '#podcasts',
+			'name': 'Podcasts'
+		},
+		{
+			'href': '#books',
+			'name': 'Books'
+		},
+		{
+			'href': '#libs',
+			'name': 'Libraries'
+		},
+		{
+			'href': '/',
+			'name': 'Blog'
+		}
+	]
+	return render_template("resources.html", title="Learning With Data / Resources", sections=sections)
+
 
 @app.route("/rss_feed.xml")
 def feed():
 	return send_from_directory(app.static_folder, request.path[1:])
+
 
 @app.route("/nfl_historical_rankings/", methods=['GET', 'POST'])
 def nfl_historical_rankings():
@@ -50,14 +102,6 @@ def nfl_historical_rankings():
 		defRankList.append(row[0])
 
 	return render_template("historical_nfl_rankings.html", team_names=teamNamesList, name=name, o_data_years=yearList, o_data_rk=offRankList, d_data_rk=defRankList)
-
-@app.errorhandler(404)
-def error_handler(error):
-    app.logger.warning(error)
-
-@app.errorhandler(500)
-def error_handler(error):
-    app.logger.warning(error)
 
 @app.route('/robots.txt')
 def static_from_root():
