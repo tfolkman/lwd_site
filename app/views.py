@@ -3,10 +3,7 @@ from flask import send_file
 from flask import render_template
 from flask import request
 from flask import send_from_directory
-import logging
-from logging.handlers import RotatingFileHandler
-
-app = Flask(__name__, static_folder='static')
+from app import app
 
 @app.route("/")
 def index():
@@ -65,12 +62,3 @@ def error_handler(error):
 @app.route('/robots.txt')
 def static_from_root():
 	    return send_from_directory(app.static_folder, request.path[1:])
-
-if __name__ == "__main__":
-	handler = RotatingFileHandler('./logs/flask/lwd.log', maxBytes=10000, backupCount=1)
-	handler.setLevel(logging.DEBUG)
-	formatter = logging.Formatter( "%(asctime)s | %(pathname)s:%(lineno)d | %(funcName)s | %(levelname)s | %(message)s ")
-	handler.setFormatter(formatter)
-	app.logger.addHandler(handler)
-	app.logger.setLevel(logging.DEBUG)
-	app.run()
