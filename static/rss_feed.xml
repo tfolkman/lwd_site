@@ -7,6 +7,12 @@
 <description>Website that hosts personal data science projects</description>
 <link>http://learningwithdata.com</link>
 <item>
+<item>
+<title>Fantasy Football Predictions</title>
+<description><![CDATA[ My attempt to predict fantasy football points better than ESPN.]]></description>
+<link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Predict%20Fantasy%20Football%20Points.ipynb</link>
+<pubDate>Thu, 08 Oct 2015 23:30:00 CDT</pubDate>
+</item><item>
 <title>Fantasy Football</title>
 <description><![CDATA[ A look at how players in the NFL are performing relative to their fantasy football projections.]]></description>
 <link>http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Biggest_Misses.ipynb</link>
