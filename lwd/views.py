@@ -3,7 +3,7 @@ from flask import send_file
 from flask import render_template
 from flask import request
 from flask import send_from_directory
-from app import app
+from . import app
 
 
 @app.route("/")
