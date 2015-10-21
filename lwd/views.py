@@ -28,7 +28,7 @@ def index():
 
     most_recent_post = db.session.query(Post).filter_by(most_recent=True).one()
     most_recent_post = most_recent_post.__dict__
-    old_posts = db.session.query(Post).filter_by(most_recent=False).all()
+    old_posts = db.session.query(Post).filter_by(most_recent=False).order_by(Post.id.desc()).all()
     old_posts = [post.__dict__ for post in old_posts]
 
     return render_template("index.html", title='Learning With Data', sections=sections,
