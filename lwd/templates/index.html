@@ -4,17 +4,19 @@
     <!--MOST RECENT POST-->
     <section class="container-fluid evenSection" id="mostRecent">
         <div class="container text-center">
-            <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Biggest_Misses.ipynb"><h1>Fantasy Football</h1></a>
-            <h3>A look at how players in the NFL are performing relative to their fantasy football projections</h3>
+            <a href="{{ most_recent_post.href }}"><h1>{{ most_recent_post.title }}</h1></a>
+            <h3>{{ most_recent_post.sub_title }}</h3>
             <div class="row" style="height:420">
                 <div class="col-sm-12 text-center">
-                    <a href="http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Biggest_Misses.ipynb"><img src="/static/images/fantasy_football.png" alt="fantasy_football" class="img-responsive center-block" style="max-height:420px"></a>
+                    <a href="{{ most_recent_post.href }}"><img src="{{ most_recent_post.image_source }}"
+                                                               class="img-responsive center-block" style="max-height:420px"></a>
                 </div>
             </div>
             <footer class="evenSection top-buffer">
                 <div class="row">
                     <div class="col-sm-2 text-right">
-                        <a href="https://twitter.com/share" class="twitter-share-button" data-via="tylerfolkman" data-text="A look at how players in the NFL are performing relative to their fantasy football projections" data-count="none">Tweet</a>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-via="tylerfolkman"
+                           data-text="{{ most_recent_post.sub_title }}" data-count="none">Tweet</a>
                     </div>
                     <div class="col-sm-2 text-right">
                         <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>

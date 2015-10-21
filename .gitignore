@@ -3,3 +3,4 @@ venv/
 logs/
 *.sql
 todo.txt
+run.py

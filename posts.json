@@ -1,0 +1,101 @@
+[
+	{
+		"id": "0",
+		"most_recent": "False",
+		"href": "http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Top_Offensive_Tackles.ipynb",
+		"title": "High School Offensive Tackles",
+		"sub_title": "I take a look at my brother's chances of playing college football.",
+		"image_source": "/static/images/ot.png",
+		"date": "20150111"
+	},
+	{
+		"id": "1",
+		"most_recent": "False",
+		"href": "http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Python_For_Data_Mining.ipynb",
+		"title": "Python For Data Mining",
+		"sub_title": "Tutorial on how to use Python for data mining",
+		"image_source": "/static/images/python_dm.png",
+		"date": "20150117"
+	},
+	{
+		"id": "2",
+		"most_recent": "False",
+		"href": "http://nbviewer.ipython.org/github/tfolkman/mimic_data/blob/master/Getting_Started_with_MIMIC_Demo.ipynb",
+		"title": "MIMIC Data",
+		"sub_title": "Learn how to start analyzing a very rich healthcare dataset of Intensive Care Unit patients.",
+		"image_source": "/static/images/mimic_demo.png",
+		"date": "20150114"
+	},
+	{
+		"id": "3",
+		"most_recent": "False",
+		"href": "http://tfolkman.github.io/state_map/index.html",
+		"title": "My First D3 Map",
+		"sub_title": "I have always wanted to create a D3 map, so here is my first attempt",
+		"image_source": "/static/images/d3_map.png",
+		"date": "20150201"
+	},
+	{
+		"id": "4",
+		"most_recent": "False",
+		"href": "http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Bayes_Primer.ipynb",
+		"title": "Introduction to Bayes Theorem",
+		"sub_title": "A brief introducton to Bayes Theorem and how to use it in Python.",
+		"image_source": "/static/images/bayes_intro.png",
+		"date": "20151017"
+	},
+	{
+		"id": "5",
+		"most_recent": "False",
+		"href": "http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Continuous%20Prior.ipynb",
+		"title": "Bayes With Continuous Prior",
+		"sub_title": "A tutorial on how to use Bayes Theorem with a continuous prior.",
+		"image_source": "/static/images/bayes_cont.png",
+		"date": "20150403"
+	},
+	{
+		"id": "6",
+		"most_recent": "False",
+		"href": "http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/TalkPay.ipynb",
+		"title": "Talkpay",
+		"sub_title": "A look at #talkpay and the distribution of incomes.",
+		"image_source": "/static/images/talkpay.png",
+		"date": "20150501"
+	},
+	{
+		"id": "7",
+		"most_recent": "False",
+		"href": "http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Logistic%20Gradient%20Descent.ipynb",
+		"title": "Logistic Regression and Optimization",
+		"sub_title": "A tutorial on logisitic regression and how to learn the weights using optimization.",
+		"image_source": "/static/images/log_reg.png",
+		"date": "20150429"
+	},
+	{
+		"id": "8",
+		"most_recent": "False",
+		"href": "/nfl_historical_rankings/",
+		"title": "Historical NFL Rankings",
+		"sub_title": "Visualize your NFL Team's Historical Offensive and Defensive Rankings.",
+		"image_source": "/static/images/49ers_nfl_ranking_chart.png",
+		"date": "20150601"
+	},
+	{
+		"id": "9",
+		"most_recent": "False",
+		"href": "http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Getting_Started_With_Spark_DataFrame.ipynb",
+		"title": "Spark DataFrames",
+		"sub_title": "How to get started with Spark using IPython and Spark DataFrames.",
+		"image_source": "/static/images/spark-logo.png",
+		"date": "20150802"
+	},
+	{
+		"id": "10",
+		"most_recent": "True",
+		"href": "http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Biggest_Misses.ipynb",
+		"title": "Fantasy Football",
+		"sub_title": "A look at how players in the NFL are performing relative to their fantasy football projections",
+		"image_source": "/static/images/fantasy_football.png",
+		"date": "20151001"
+	}
+]
