@@ -156,7 +156,7 @@
 
                 <div class="col-sm-3">
                     <a href="{{ post.href }}"><h2>{{ post.title }}</h2></a>
-                    <p class="normalText">{{ post.sub_title }}</p>
+                    <p class="normalText">{{ post.sub_title|safe }}</p>
                     <a href="{{ post.href }}"><img src="{{ post.image_source }}" class="img-responsive center-block"></a>
                 </div>
 
