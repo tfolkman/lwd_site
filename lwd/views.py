@@ -2,7 +2,7 @@ from flask import render_template
 from flask import request
 from flask import send_from_directory
 from . import app, db
-from lwd.models import Post
+from lwd.models import Post, Resource
 
 
 @app.route("/")
@@ -67,7 +67,38 @@ def resources():
             'name': 'Blog'
         }
     ]
-    return render_template("resources.html", title="Learning With Data / Resources", sections=sections)
+
+    resource_posts = db.session.query(Resource).order_by(Resource.id).all()
+
+    getting_started = []
+    online_resources = []
+    site_resources = []
+    podcast_resources = []
+    book_resources = []
+    library_resources = []
+
+    for resource in resource_posts:
+        resource_dict = resource.__dict__
+        if resource_dict['resource_type'] == 'gettingStarted':
+            getting_started.append(resource_dict)
+        if resource_dict['resource_type'] == 'online':
+            online_resources.append(resource_dict)
+        if resource_dict['resource_type'] == 'sites':
+            site_resources.append(resource_dict)
+        if resource_dict['resource_type'] == 'podcasts':
+            podcast_resources.append(resource_dict)
+        if resource_dict['resource_type'] == 'books':
+            book_resources.append(resource_dict)
+        if resource_dict['resource_type'] == 'libs':
+            library_resources.append(resource_dict)
+
+    return render_template("resources.html", title="Learning With Data / Resources", sections=sections,
+                           getting_started=getting_started,
+                           online_resources=online_resources,
+                           site_resources=site_resources,
+                           podcast_resources=podcast_resources,
+                           book_resources=book_resources,
+                           library_resources=library_resources)
 
 
 @app.route("/rss_feed.xml")

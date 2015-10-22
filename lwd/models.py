@@ -20,5 +20,5 @@ class Resource(db.Model):
     resource_type = db.Column(db.String(64))
     href = db.Column(db.String(256))
     title = db.Column(db.String(128))
-    sub_title = db.Column(db.String(256))
+    sub_title = db.Column(db.String(512))
     image_source = db.Column(db.String(128))
