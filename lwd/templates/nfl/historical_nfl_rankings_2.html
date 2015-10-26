@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+    {% block css %}
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+
+    {% endblock %}
+
+    {% block content %}
+
+    <div class="container">
+	    <!--SELECT 2-->
+        <div class="row" style="padding-top: 70px">
+            <div class="col-sm-12">
+                <form action="{{ url_for('nfl_historical_rankings') }}" method="POST" class="form-inline" id="teamForm">
+                    <select class="select" style="width:50%" name='team'>
+                        {% for o in team_names %}
+                        <option value="{{ o }}" style="color: black">{{ o }}</option>
+                        {% endfor %}
+                    </select>
+                    <button id="submitTeam" type="submit" class="btn btn-default btn-sm">Submit</button>
+                </form>
+            </div>
+        </div>
+        <!--CHART-->
+        <div class="row top-buffer">
+            <div class="col-sm-12">
+                <div id="nfl-chart" class="chart-size"></div>
+            </div>
+        </div>
+        <!--NOTES-->
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="orangeText">Notes</h2>
+                <p style="color:black">Lower ranking is better (1 is best).</p>
+                <p style="color:black">Ranking based on average yards per game.</p>
+                <p style="color:black">Data from 1970 to 2014 for regular season games.</p>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+    <!-- script references -->
+    {% block js %}
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script src="/static/js/highcharts.js"></script>
+    <script src="/static/js/exporting.js"></script>
+    <script type="text/javascript">
+
+    $('select').select2({
+        placeholder: "Select a Team"
+    });
+    $("select").select2("val", "{{ name }}");
+    $('.select2-selection').on('keyup', function (e) {
+        if (e.keyCode === 13) {
+            $(this).closest('form').submit();
+        }
+    });
+
+    $(document).ready(function() {
+        $('#nfl-chart').highcharts({
+            title: {
+                text: '{{ name }}',
+                x: -20 //center
+            },
+            xAxis: {
+                categories: {{ o_data_years }}
+            },
+            yAxis: {
+                title: {
+                    text: 'Ranking'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }],
+                min: 0
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'center',
+                verticalAlign: 'bottom',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Offensive Ranking',
+                color: '#0571b0',
+                data: {{ o_data_rk }}
+            }, {
+                name: 'Defensive Ranking',
+                color: '#ca0020',
+                data: {{ d_data_rk }}
+            }],
+            credits: {
+                enabled: false
+            }
+        });
+    });
+    </script>
+
+    {% endblock %}

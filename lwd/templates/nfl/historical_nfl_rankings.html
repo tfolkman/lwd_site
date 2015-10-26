@@ -23,20 +23,13 @@
             </div>
         </div>
         <!--CHART-->
-        <div class="row top-buffer">
-            <div class="col-sm-12">
-                <div id="nfl-chart" class="chart-size"></div>
+        <div id="content"></div>
+
+
+<!--                 <h2 class="orangeText">Notes</h2>
             </div>
         </div>
-        <!--NOTES-->
-        <div class="row">
-            <div class="col-sm-12">
-                <h2 class="orangeText">Notes</h2>
-                <p style="color:black">Lower ranking is better (1 is best).</p>
-                <p style="color:black">Ranking based on average yards per game.</p>
-                <p style="color:black">Data from 1970 to 2014 for regular season games.</p>
-            </div>
-        </div>
+ -->        
     </div>
 
     {% endblock %}
@@ -44,61 +37,112 @@
     <!-- script references -->
     {% block js %}
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
     <script src="/static/js/highcharts.js"></script>
     <script src="/static/js/exporting.js"></script>
-    <script type="text/javascript">
 
-    $('select').select2({
-        placeholder: "Select a Team"
-    });
-    $("select").select2("val", "{{ name }}");
-    $('.select2-selection').on('keyup', function (e) {
-        if (e.keyCode === 13) {
-            $(this).closest('form').submit();
-        }
-    });
+    <script type="text/babel">
 
-    $(document).ready(function() {
-        $('#nfl-chart').highcharts({
-            title: {
-                text: '{{ name }}',
-                x: -20 //center
-            },
-            xAxis: {
-                categories: {{ o_data_years }}
-            },
-            yAxis: {
-                title: {
-                    text: 'Ranking'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }],
-                min: 0
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'center',
-                verticalAlign: 'bottom',
-                borderWidth: 0
-            },
-            series: [{
-                name: 'Offensive Ranking',
-                color: '#0571b0',
-                data: {{ o_data_rk }}
-            }, {
-                name: 'Defensive Ranking',
-                color: '#ca0020',
-                data: {{ d_data_rk }}
-            }],
-            credits: {
-                enabled: false
+        var App = React.createClass({displayName: 'App',
+            render: function() {
+                return (
+                    <div className="nfl">
+                        <div className="row top-buffer">
+                            <div className="col-sm-12">
+                                <Graph />
+                            </div>
+                        </div>
+                        <Notes />
+                    </div>
+                );
             }
         });
-    });
+
+        var Notes = React.createClass({displayName: 'Notes',
+            render: function() {
+                return (
+                    <div className="row">
+                        <div className="col-sm-12">
+                            <h2 className="orangeText">Notes</h2>
+                            <p className="blackText">Lower ranking is better (1 is best).</p>
+                            <p className="blackText">Ranking based on average yards per game.</p>
+                            <p className="blackText">Data from 1970 to 2014 for regular season games.</p>
+                        </div>
+                    </div>
+                );
+            }
+        });
+
+        var Graph = React.createClass({
+
+            componentDidMount: function() {
+                var el = this.refs.chartNode;
+                $(el).highcharts({
+                    title: {
+                        text: '{{ name }}',
+                        x: -20 //center
+                    },
+                    xAxis: {
+                        categories: {{ o_data_years }}
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Ranking'
+                        },
+                        plotLines: [{
+                            value: 0,
+                            width: 1,
+                            color: '#808080'
+                        }],
+                        min: 0
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'center',
+                        verticalAlign: 'bottom',
+                        borderWidth: 0
+                    },
+                    series: [{
+                        name: 'Offensive Ranking',
+                        color: '#0571b0',
+                        data: {{ o_data_rk }}
+                    }, {
+                        name: 'Defensive Ranking',
+                        color: '#ca0020',
+                        data: {{ d_data_rk }}
+                    }],
+                    credits: {
+                        enabled: false
+                    }
+                });
+            },
+
+            render: function() {
+                return (
+                    React.DOM.div({className: "chart-size", ref: "chartNode"})
+                );
+            }
+        })
+
+        ReactDOM.render(
+            React.createElement(App, null),
+            document.getElementById('content')
+        );
+    </script>
+
+    <script type="text/javascript">
+        $('select').select2({
+            placeholder: "Select a Team"
+        });
+        $("select").select2("val", "{{ name }}");
+        $('.select2-selection').on('keyup', function (e) {
+            if (e.keyCode === 13) {
+                $(this).closest('form').submit();
+            }
+        });
     </script>
 
     {% endblock %}
