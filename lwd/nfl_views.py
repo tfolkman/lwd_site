@@ -1,9 +1,13 @@
-from flask import render_template, request
+from flask import render_template, request, make_response
 from . import app, db
+import json
 from sqlalchemy import text
 
-# @app.route("/nfl_rankings_data"/)
-# def nfl_rankings_data():
+@app.route("/nfl_teams/")
+def nfl_rankings_data():
+    team_names = db.engine.execute("""select distinct team from off_regseason_gamestats order by team;""")
+    values = [team[0] for team in team_names]
+    return json.dumps(values)
 
 
 @app.route("/nfl_historical_rankings/", methods=['GET', 'POST'])

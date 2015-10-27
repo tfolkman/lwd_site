@@ -5,12 +5,11 @@ var Select = require('react-select');
 
 var MySelect = React.createClass({
     render: function() {
-        var options = [
-            { value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' }
-        ];
+        var options = this.props.teams.map( function(team) {
+            return {value: team, label: team};
+        });
         return (
-            <Select name="form-field-name" value="one" options={options} />
+            <Select name="team-select" value="Select a Team" options={options} />
         );
     }    
 });
@@ -32,12 +31,30 @@ var Notes = React.createClass({displayName: 'Notes',
 
 var App = React.createClass({displayName: 'App',
 
+    getInitialState: function() {
+        return {teams: []};
+    },
+
+    componentDidMount: function() {
+        $.ajax({
+            url: this.props.url,
+            dataType: 'json',
+            cache: false,
+            success: function(teams) {
+                this.setState({teams: teams});
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
+    },
+
     render: function() {
         return (
             <div className="nfl">
                 <div className="row">
                     <div className="col-sm-12 row-top-buffer">
-                        <MySelect />
+                        <MySelect teams={this.state.teams} />
                     </div>
                 </div>
                 <div className="row top-buffer">
@@ -103,6 +120,6 @@ var Graph = React.createClass({
 });
 
 ReactDOM.render(
-    <App />,
+    <App url="/nfl_teams" />,
     document.getElementById('content')
 );

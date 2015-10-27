@@ -9,8 +9,10 @@ var MySelect = React.createClass({
     displayName: 'MySelect',
 
     render: function render() {
-        var options = [{ value: 'one', label: 'One' }, { value: 'two', label: 'Two' }];
-        return React.createElement(Select, { name: 'form-field-name', value: 'one', options: options });
+        var options = this.props.teams.map(function (team) {
+            return { value: team, label: team };
+        });
+        return React.createElement(Select, { name: 'team-select', value: 'Select a Team', options: options });
     }
 });
 
@@ -49,6 +51,24 @@ var Notes = React.createClass({ displayName: 'Notes',
 
 var App = React.createClass({ displayName: 'App',
 
+    getInitialState: function getInitialState() {
+        return { teams: [] };
+    },
+
+    componentDidMount: function componentDidMount() {
+        $.ajax({
+            url: this.props.url,
+            dataType: 'json',
+            cache: false,
+            success: (function (teams) {
+                this.setState({ teams: teams });
+            }).bind(this),
+            error: (function (xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }).bind(this)
+        });
+    },
+
     render: function render() {
         return React.createElement(
             'div',
@@ -59,7 +79,7 @@ var App = React.createClass({ displayName: 'App',
                 React.createElement(
                     'div',
                     { className: 'col-sm-12 row-top-buffer' },
-                    React.createElement(MySelect, null)
+                    React.createElement(MySelect, { teams: this.state.teams })
                 )
             ),
             React.createElement(
@@ -126,7 +146,7 @@ var Graph = React.createClass({
     }
 });
 
-ReactDOM.render(React.createElement(App, null), document.getElementById('content'));
+ReactDOM.render(React.createElement(App, { url: '/nfl_teams' }), document.getElementById('content'));
 
 },{"react":163,"react-dom":2,"react-select":4}],2:[function(require,module,exports){
 'use strict';
