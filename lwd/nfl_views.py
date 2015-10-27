@@ -2,6 +2,9 @@ from flask import render_template, request
 from . import app, db
 from sqlalchemy import text
 
+# @app.route("/nfl_rankings_data"/)
+# def nfl_rankings_data():
+
 
 @app.route("/nfl_historical_rankings/", methods=['GET', 'POST'])
 def nfl_historical_rankings():

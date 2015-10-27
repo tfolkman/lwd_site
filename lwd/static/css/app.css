@@ -45,3 +45,7 @@ h3 {
 .blackText {
     color: black;
 }
+
+.row-top-buffer {
+    padding-top: 70px;
+}

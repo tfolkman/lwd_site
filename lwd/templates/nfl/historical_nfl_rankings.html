@@ -2,34 +2,17 @@
 
     {% block css %}
 
-    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+   <link href="/static/js/node_modules/react-select/dist/default.css" rel="stylesheet" />
 
     {% endblock %}
 
     {% block content %}
 
     <div class="container">
-	    <!--SELECT 2-->
-        <div class="row" style="padding-top: 70px">
-            <div class="col-sm-12">
-                <form action="{{ url_for('nfl_historical_rankings') }}" method="POST" class="form-inline" id="teamForm">
-                    <select class="select" style="width:50%" name='team'>
-                        {% for o in team_names %}
-                        <option value="{{ o }}" style="color: black">{{ o }}</option>
-                        {% endfor %}
-                    </select>
-                    <button id="submitTeam" type="submit" class="btn btn-default btn-sm">Submit</button>
-                </form>
-            </div>
-        </div>
+
         <!--CHART-->
         <div id="content"></div>
 
-
-<!--                 <h2 class="orangeText">Notes</h2>
-            </div>
-        </div>
- -->        
     </div>
 
     {% endblock %}
@@ -37,112 +20,10 @@
     <!-- script references -->
     {% block js %}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
     <script src="/static/js/highcharts.js"></script>
     <script src="/static/js/exporting.js"></script>
+    <script src="/static/js/nfl/nfl_bundle.js">
 
-    <script type="text/babel">
-
-        var App = React.createClass({displayName: 'App',
-            render: function() {
-                return (
-                    <div className="nfl">
-                        <div className="row top-buffer">
-                            <div className="col-sm-12">
-                                <Graph />
-                            </div>
-                        </div>
-                        <Notes />
-                    </div>
-                );
-            }
-        });
-
-        var Notes = React.createClass({displayName: 'Notes',
-            render: function() {
-                return (
-                    <div className="row">
-                        <div className="col-sm-12">
-                            <h2 className="orangeText">Notes</h2>
-                            <p className="blackText">Lower ranking is better (1 is best).</p>
-                            <p className="blackText">Ranking based on average yards per game.</p>
-                            <p className="blackText">Data from 1970 to 2014 for regular season games.</p>
-                        </div>
-                    </div>
-                );
-            }
-        });
-
-        var Graph = React.createClass({
-
-            componentDidMount: function() {
-                var el = this.refs.chartNode;
-                $(el).highcharts({
-                    title: {
-                        text: '{{ name }}',
-                        x: -20 //center
-                    },
-                    xAxis: {
-                        categories: {{ o_data_years }}
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Ranking'
-                        },
-                        plotLines: [{
-                            value: 0,
-                            width: 1,
-                            color: '#808080'
-                        }],
-                        min: 0
-                    },
-                    legend: {
-                        layout: 'vertical',
-                        align: 'center',
-                        verticalAlign: 'bottom',
-                        borderWidth: 0
-                    },
-                    series: [{
-                        name: 'Offensive Ranking',
-                        color: '#0571b0',
-                        data: {{ o_data_rk }}
-                    }, {
-                        name: 'Defensive Ranking',
-                        color: '#ca0020',
-                        data: {{ d_data_rk }}
-                    }],
-                    credits: {
-                        enabled: false
-                    }
-                });
-            },
-
-            render: function() {
-                return (
-                    React.DOM.div({className: "chart-size", ref: "chartNode"})
-                );
-            }
-        })
-
-        ReactDOM.render(
-            React.createElement(App, null),
-            document.getElementById('content')
-        );
-    </script>
-
-    <script type="text/javascript">
-        $('select').select2({
-            placeholder: "Select a Team"
-        });
-        $("select").select2("val", "{{ name }}");
-        $('.select2-selection').on('keyup', function (e) {
-            if (e.keyCode === 13) {
-                $(this).closest('form').submit();
-            }
-        });
     </script>
 
     {% endblock %}
