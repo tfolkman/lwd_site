@@ -5,14 +5,57 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Select = require('react-select');
 
-var MySelect = React.createClass({
-    displayName: 'MySelect',
+var SelectGraph = React.createClass({
+    displayName: 'SelectGraph',
+
+    getInitialState: function getInitialState() {
+        return { data: [], team: [] };
+    },
+
+    componentDidMount: function componentDidMount() {
+        var team = "San Francisco 49ers";
+        this.setState({ data: this.loadTeamData(team), team: team });
+    },
+
+    loadTeamData: function loadTeamData(team) {
+        $.ajax({
+            url: this.props.url,
+            type: 'POST',
+            data: JSON.stringify({ 'team': team }),
+            contentType: 'application/json;charset=UTF-8',
+            dataType: 'json',
+            cache: false,
+            success: (function (data) {
+                this.setState({ data: data, team: team });
+            }).bind(this),
+            error: (function (xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }).bind(this)
+        });
+    },
 
     render: function render() {
         var options = this.props.teams.map(function (team) {
             return { value: team, label: team };
         });
-        return React.createElement(Select, { name: 'team-select', value: 'Select a Team', options: options });
+        return React.createElement(
+            'div',
+            { className: 'row' },
+            React.createElement(
+                'div',
+                { className: 'col-sm-3 row-top-buffer' },
+                React.createElement(Select, { name: 'team-select', value: this.state.team, options: options, onChange: this.loadTeamData })
+            ),
+            React.createElement(
+                'div',
+                { className: 'row top-buffer' },
+                React.createElement(
+                    'div',
+                    { className: 'col-sm-12' },
+                    React.createElement(Graph, { data: this.state.data, team: this.state.team })
+                )
+            )
+        );
     }
 });
 
@@ -27,7 +70,7 @@ var Notes = React.createClass({ displayName: 'Notes',
                 React.createElement(
                     'h2',
                     { className: 'orangeText' },
-                    'Notes4'
+                    'Notes'
                 ),
                 React.createElement(
                     'p',
@@ -57,14 +100,14 @@ var App = React.createClass({ displayName: 'App',
 
     componentDidMount: function componentDidMount() {
         $.ajax({
-            url: this.props.url,
+            url: this.props.teamUrl,
             dataType: 'json',
             cache: false,
             success: (function (teams) {
                 this.setState({ teams: teams });
             }).bind(this),
             error: (function (xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
+                console.error(this.props.teamUrl, status, err.toString());
             }).bind(this)
         });
     },
@@ -73,24 +116,7 @@ var App = React.createClass({ displayName: 'App',
         return React.createElement(
             'div',
             { className: 'nfl' },
-            React.createElement(
-                'div',
-                { className: 'row' },
-                React.createElement(
-                    'div',
-                    { className: 'col-sm-12 row-top-buffer' },
-                    React.createElement(MySelect, { teams: this.state.teams })
-                )
-            ),
-            React.createElement(
-                'div',
-                { className: 'row top-buffer' },
-                React.createElement(
-                    'div',
-                    { className: 'col-sm-12' },
-                    React.createElement(Graph, null)
-                )
-            ),
+            React.createElement(SelectGraph, { teams: this.state.teams, url: this.props.dataUrl }),
             React.createElement(Notes, null)
         );
     }
@@ -99,15 +125,15 @@ var App = React.createClass({ displayName: 'App',
 var Graph = React.createClass({
     displayName: 'Graph',
 
-    componentDidMount: function componentDidMount() {
+    componentDidUpdate: function componentDidUpdate() {
         var el = this.refs.chartNode;
         $(el).highcharts({
             title: {
-                text: '{{ name }}',
+                text: this.props.team,
                 x: -20 //center
             },
             xAxis: {
-                categories: ['a', 'b']
+                categories: this.props.data.years
             },
             yAxis: {
                 title: {
@@ -129,11 +155,11 @@ var Graph = React.createClass({
             series: [{
                 name: 'Offensive Ranking',
                 color: '#0571b0',
-                data: [1, 2]
+                data: this.props.data.offense
             }, {
                 name: 'Defensive Ranking',
                 color: '#ca0020',
-                data: [2, 3]
+                data: this.props.data.defense
             }],
             credits: {
                 enabled: false
@@ -146,7 +172,7 @@ var Graph = React.createClass({
     }
 });
 
-ReactDOM.render(React.createElement(App, { url: '/nfl_teams' }), document.getElementById('content'));
+ReactDOM.render(React.createElement(App, { teamUrl: '/nfl_teams/', dataUrl: '/nfl_team_data/' }), document.getElementById('content'));
 
 },{"react":163,"react-dom":2,"react-select":4}],2:[function(require,module,exports){
 'use strict';
