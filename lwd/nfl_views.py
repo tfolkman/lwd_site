@@ -1,5 +1,5 @@
 from flask import render_template, request
-from . import app, db
+from . import app, db, redis_db
 import json
 from sqlalchemy import text
 
@@ -14,21 +14,26 @@ def nfl_teams():
 @app.route("/nfl_team_data/", methods=['POST'])
 def nfl_team_data():
     team = request.json['team']
-    team_data = db.engine.execute(text("""select o.year, o.rk as off_rk, d.rk as def_rk
-                            from off_regseason_gamestats o
-                            left join def_rev_regseason_gamestats d
-                              on o.year = d.year and o.team = d.team
-                            where o.team like :name
-                            order by year;"""), {'name': team})
-    off_rank_list = []
-    year_list = []
-    def_rank_list = []
-    for row in team_data:
-        year_list.append(row[0])
-        off_rank_list.append(row[1])
-        def_rank_list.append(row[2])
-    json_data = {'years': year_list, 'offense': off_rank_list, 'defense': def_rank_list}
-    return json.dumps(json_data)
+
+    if redis_db.exists(team):
+        return redis_db.get(team).decode('utf-8')
+    else:
+        team_data = db.engine.execute(text("""select o.year, o.rk as off_rk, d.rk as def_rk
+                                from off_regseason_gamestats o
+                                left join def_rev_regseason_gamestats d
+                                  on o.year = d.year and o.team = d.team
+                                where o.team like :name
+                                order by year;"""), {'name': team})
+        off_rank_list = []
+        year_list = []
+        def_rank_list = []
+        for row in team_data:
+            year_list.append(row[0])
+            off_rank_list.append(row[1])
+            def_rank_list.append(row[2])
+        json_data = {'years': year_list, 'offense': off_rank_list, 'defense': def_rank_list}
+        redis_db.set(team, json.dumps(json_data))
+        return json.dumps(json_data)
 
 
 @app.route("/nfl_historical_rankings/")
