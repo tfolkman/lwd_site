@@ -1,0 +1,10 @@
+{  
+  "name": "lwd",  
+  "version": "0.0.1",  
+  "dependencies" : {  
+    "react" : "*",  
+    "react-dom" : "*",  
+    "react-select" : "*",  
+    "babelify" : "*"  
+  }  
+}
