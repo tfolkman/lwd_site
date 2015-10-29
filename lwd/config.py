@@ -1,5 +1,6 @@
 import os
 
+DEBUG = os.environ.get('DEBUG', None)
 SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', None)
 
 # Redis connection
