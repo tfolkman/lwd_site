@@ -91,11 +91,20 @@
 	},
 	{
 		"id": "10",
-		"most_recent": "True",
+		"most_recent": "False",
 		"href": "http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Biggest_Misses.ipynb",
 		"title": "Fantasy Football",
 		"sub_title": "A look at how players in the NFL are performing relative to their fantasy football projections",
 		"image_source": "/static/images/fantasy_football.png",
 		"date": "20151001"
+	},
+	{
+		"id": "11",
+		"most_recent": "True",
+		"href": "http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Predict%20Fantasy%20Football%20Points.ipynb",
+		"title": "Fantasy Football Predictions",
+		"sub_title": "My attempt to predict Fantasy Football points better than ESPN",
+		"image_source": "/static/images/ff_predictions.png",
+		"date": "20151009"
 	}
 ]
