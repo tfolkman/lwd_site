@@ -3,7 +3,7 @@ h3 {
 }
 
 .evenSection {
-  background-color: #2b3e50;
+  background-color: #123874;
 }
 
 .oddSection{
@@ -48,4 +48,29 @@ h3 {
 
 .row-top-buffer {
     padding-top: 70px;
+}
+
+.bold-h1 {
+    color: #123874;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 60px; font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+.bold-h2 {
+    color: #111;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0 0 40px;
+}
+
+.line {
+    border-top: 1px solid #111;
+    display: block;
+    margin-top: 40px;
+    padding-top: 30px;
+    position: relative;
 }

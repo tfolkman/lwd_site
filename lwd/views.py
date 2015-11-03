@@ -101,6 +101,22 @@ def resources():
                            library_resources=library_resources)
 
 
+@app.route("/data_app_tutorial/")
+def data_app_tutorial():
+    sections = [
+        {
+            'href': '/',
+            'name': 'Blog'
+        },
+        {
+            'href': '/resources/',
+            'name': 'Data Science Resources'
+        }
+    ]
+
+    return render_template("data_app_tutorial.html", title='Learning With Data', sections=sections)
+
+
 @app.route("/rss_feed.xml")
 def feed():
     return send_from_directory(app.static_folder, request.path[1:])
