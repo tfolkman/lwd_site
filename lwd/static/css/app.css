@@ -64,7 +64,17 @@ h3 {
     font-size: 30px;
     font-weight: 300;
     line-height: 32px;
-    margin: 0 0 40px;
+    margin: 40px 0;
+}
+
+.bold-p {
+    color: #685206;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 20px 0;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .line {

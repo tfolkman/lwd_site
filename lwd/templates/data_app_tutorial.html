@@ -1,12 +1,149 @@
 {% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/tomorrow-night-blue.min.css">
+{% endblock %}
+
 {% block content %}
 
     <section class="container-fluid oddSection">
         <div class="container">
           <h1 class="text-left bold-h1">building a data web app</h1>
-            <h2 class="text-left bold-h2">for data scientists</h2>
+            <h2 class="text-left bold-h2" style="margin-top: 0">for data scientists</h2>
             <p class="line"></p>
+            <p class="bold-p">Data scientists are great at building models. We are even getting pretty good at creating
+            nice <a href="http://jupyter.org/">Jupyter notebooks</a>, but it can be difficult to make the transition
+            from a static analysis to a dynamic web page that users can interact with. Obviously, not all data science
+            problems need to be converted to a dynamic page, but it can be a very powerful tool to use when necessary.
+            This goal of this post is to allow someone with little or no web background to create an interactive visualization.
+            My hope is that the tools introduced in this post will easily generalize to other applications as well.</p>
+
+            <h2 class="text-left bold-h2">Vagrant</h2>
+            <p class="bold-p"><a href="https://www.vagrantup.com/">Vagrant</a> is a nice tool that will allow us to all
+            be developing on the same machine. First, install <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>,
+            which basically allows you to virtualize an entire new machine on your computer. Vagrant will leverage VirtualBox. Second,
+            <a href="http://www.vagrantup.com/downloads">install</a> Vagrant. Now, go to your terminal and type:</p>
+            <pre><code class="shell">
+                vagrant init ubuntu/trusty64;
+                vagrant up;
+            </code></pre>
+            <p class="bold-p">This will take a minute, but after it completes, you will not have access to an <a href="http://releases.ubuntu.com/14.04/">
+                Ubuntu 14.04 machine.</a> Now run:</p>
+            <pre><code class="shell">
+                vagrant ssh;
+            </code></pre>
+            <p class="bold-p">This will give you access to your new machine via the shell. </p>
+
+            <h2 class="text-left bold-h2">Pip, Virtualenv, and Git</h2>
+            <p class="bold-p">Let's go ahead and get some of our setup out of the way. We will be using
+            <a href="https://git-scm.com/">git</a>, <a href="https://pypi.python.org/pypi/pip">pip</a>,
+                and <a href="https://virtualenv.readthedocs.org/en/latest/">virtualenv.</a> Git is a version control software
+            that is amazingly useful. We won't use it much in this post, but if you are not familiar - definitely check it out.
+            Pip is a package manager for Python. And virtualenv allows us to create virtual environments for Python in order to
+            keep our dependencies separate from our core Python. Run the following in your Vagrant shell:</p>
+            <pre><code class="shell">
+                sudo apt-get update;
+                sudo apt-get install python-pip git;
+
+                mkdir app;
+                cd app;
+
+                sudo pip install virtualenv;
+                git init;
+            </code></pre>
+            <p class="bold-p">The first section of code is using apt-get, which uses Ubuntu's package management to install
+            pip and git. The next section then creates a directory for our app and goes there. Lastly, we use pip to install
+            virtualenv and initialize our git repository. Now let's put some actual Python libraries in our virtual environment.</p>
+            <pre><code class="shell">
+                virtualenv venv;
+                source venv/bin/activate;
+                vi requirements.txt;
+            </code></pre>
+            <p class="bold-p">Here we are creating a virtual environment named venv, activating it (which means that
+            now any packages installed will only go to this environment) and then opening vi to create requirements.txt.
+            Vi is a text editor with an insert and command mode. Insert lets you type text. So hit <code>i</code> to
+            go into insert mode and type <code>Flask</code>. Now hit <code>ESC</code> to exit insert mode and type
+            <code>ZZ</code> to save and quit. We now have a requirements.txt file with Flask typed on the first line.
+            Flask is a python library that we will use (more soon). We can now install it into our virtual environment with:</p>
+            <pre><code class="shell">
+                pip install -r requirements.txt;
+            </code></pre>
+
+            <h2 class="text-left bold-h2">Flask</h2>
+            <p class="bold-p">Now that we have Flask, we can create a a basic "Hello World" web page. I won't be going
+            into much detail for Flask, but the <a href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">
+                    Flask Mega Tutorial</a> is awesome. Let's make a folder for our Flask application.</p>
+            <pre><code class="shell">
+                mkdir flask_app;
+                cd flask_app;
+            </code></pre>
+            <p class="bold-p">Now that we are in our flask_app folder, we are going to create two Python files:
+            <code>__init__.py</code> and <code>views.py</code>. First, do <code>vi __init__.py</code> in the shell
+            to create our file. To learn some more vi commands check out <a href="http://www.openvim.com/">OpenVim</a>.
+            Insert the following into your file (remember to his <code>i</code> to go into insert mode and <code>ZZ</code>
+                to save and quit)</p>
+            <pre><code class="python">
+                from flask import Flask
+
+                app = Flask(__name__)
+                from flask_app import views
+            </code> </pre>
+            <p class="bold-p">In Python, __init__.py makes Python treat our directory as a package and allows us to
+                include some code. The code we included creates our Flask app and imports our views.
+                Now follow the same process to create <code>views.py</code> with the following:</p>
+            <pre><code class="python">
+                from flask_app import app
+
+                @app.route('/')
+                def index():
+                    return "Hello, World!"
+            </code></pre>
+            <p class="bold-p">This Python code will contain our views. Basically we define routes within our site
+            and then under those routes are the Python functions that will get called when a user goes to that route. /
+            is just the main page of the site. Our function just returns "Hello, World" for now.
+                Now, let's create a <code>run.py</code> file in our root directory
+            to launch our website.</p>
+            <pre><code class="shell">
+                cd ~/app;
+                vi run.py;
+            </code></pre>
+            <p class="bold-p">Now put this code in the file - this just imports our flask app and runs it in debug mode.</p>
+            <pre><code class="python">
+                from lwd import app
+                app.run(host='0.0.0.0', debug=True)
+            </code></pre>
+            <p class="bold-p">Now before we run our simple app, we will need to forward our vagrant ports. So type
+            <code>exit</code> to exit our vagrant shell. You will now be in a directory with a <code>VagrantFile</code>.
+            Open this file and add the following line (after <code>Vagrant.configure(2) do |config|</code>)</p>
+            <pre><code class="bash">
+                config.vm.network "forwarded_port", guest: 5000, host: 8080
+            </code></pre>
+            <p class="bold-p">Save the file and then run <code>vagrant reload</code> to reload your vagrant box.
+            Once this finishes, do <code>vagrant ssh</code> to go back to your box and type</p>
+            <pre><code class="bash">
+                cd ~/app;
+                source venv/bin/activate;
+                python run.py;
+            </code></pre>
+            <p class="bold-p">Now in your browser go to <code>http://localhost:8080/</code>. You should see Hello, World!</p>
+
+            <h2 class="text-left bold-h2">GitHub</h2>
+            <h2 class="text-left bold-h2">Conclusion - Part 1</h2>
+
+
         </div>
     </section>
 
+{% endblock %}
+
+{% block js %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('pre').each(function(i, block) {
+            debugger;
+            hljs.highlightBlock(block);
+        });
+    });
+</script>
 {% endblock %}
