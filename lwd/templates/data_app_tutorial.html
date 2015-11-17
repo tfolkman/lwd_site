@@ -128,7 +128,59 @@
             <p class="bold-p">Now in your browser go to <code>http://localhost:8080/</code>. You should see Hello, World!</p>
 
             <h2 class="text-left bold-h2">GitHub</h2>
-            <h2 class="text-left bold-h2">Conclusion - Part 1</h2>
+            <p class="bold-p">Now that we have some things working, I recommend getting connected with GitHub. For those who are not
+            familiar with Git, please check out this <a href="https://git-scm.com/book/en/v2/Getting-Started-Git-Basics">introduction</a>.
+            Also, if you are not familiar with GitHub, please see this <a href="https://help.github.com/articles/create-a-repo/">guide</a>
+            on how to create a repository. The repository is basically a place to store our code, so we can access in from anywhere (plus many other things).
+            Before, creating our repository, lets create a .gitignore file in <code>home/vagran/app</code>. This file tells git to not track certain files or directories. We are going to add our <code>venv/</code> directory to this file. So use <code>vi</code> and type <code>venv/</code> on the first line. Now git will no longer track this folder. We don't need to track our virtual environment because it is pretty easy to re-create and it can add a lot of files to our git repository. Now, create your repository, no need to initialize a readme. Rather, follow the commands from GitHub under "…or push an existing repository from the command line" which will be shown to you right after you create your repository. This will have pushed your code to GitHub. So now if you look at your repository, you will see your code on GitHub!
+            <br><br>
+            Now we can easily work on this code wherever. If you are not familiar with the basics of git, here is a good <a href="https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository">guide</a>. Commands that are frequently used are: <code>git commit, git add, git clone, git pull, git push, git status, git log</code>. This is useful for a number of reasons, one of which is you can now follow the rest of the guide outside of your Vagrant box and just pull the code into Vagrant when needed. If this is useful to you, don't forget to re-create your python virtual environment where ever you end up working on this code.</p>
+
+            <h2 class="text-left bold-h2">Templates and Bootstrap</h2>
+            <p class="bold-p">Now lets work on making our site look a bit better. First, lets create a <code>flask_app/templates</code>. This folder will store our html code. Also, we will start using <a href="http://getbootstrap.com/">Bootstrap</a>. Bootstrap is a very popular web framework that basically makes it easy to create a nice looking site that works well on mobile. I won't spend much time going into Bootstrap, but there are a ton of guides online to get you started. In our new <code>templates</code> folder, create a <code>index.html</code> file. In this file put the following:</p>
+            <pre><code class="html">
+                &lt;!DOCTYPE html&gt;
+                &lt;html lang="en"&gt;
+                  &lt;head&gt;
+                    &lt;meta charset="utf-8"&gt;
+                    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+                    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+                    &lt;!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags --&gt;
+                    &lt;title&gt;Bootstrap 101 Template&lt;/title&gt;
+
+                    &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" 
+                    integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" 
+                    crossorigin="anonymous"&gt;
+
+                  &lt;/head&gt;
+                  &lt;body&gt;
+                    &lt;h1&gt;Hello, world!&lt;/h1&gt;
+
+                    &lt;!-- jQuery (necessary for Bootstrap's JavaScript plugins) --&gt;
+                    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"&gt;&lt;/script&gt;
+                    &lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;
+                    &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" 
+                    integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" 
+                    crossorigin="anonymous"&gt;&lt;/script&gt;
+                  &lt;/body&gt;
+                &lt;/html&gt;  
+            </code></pre>
+            <p class="bold-p">Now go to your <code>views.py</code> file and replace it with this:</p>
+            <pre><code class="python">
+                from flask_app import app
+                from flask import render_template
+
+                @app.route('/')
+                def index():
+                    return render_template("index.html") 
+            </code></pre>
+            <p class="bold-p">Basically what we have just done is updated our index view to render our new index.html template. And our index.html template now contains code to bring in the CSS and JS necessary for Bootstrap and renders "Hello, world!" on our page. You should notice that the text is now in a bit nicer font. Remember, that if you halted your vagrant machine, to run <code>vagrant up</code> and then <code>vagrant ssh</code> to get into the box. Make sure your code is up to date and run:</p>
+            <pre><code class="bash">
+                cd ~/app;
+                source venv/bin/activate;
+                python run.py;
+            </code></pre>
+            <p class="bold-p">This is how you can continue to view updates to our site on <code>http://localhost:8080/</code>.
 
 
         </div>
