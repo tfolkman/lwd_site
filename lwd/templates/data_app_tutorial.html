@@ -181,8 +181,77 @@
                 python run.py;
             </code></pre>
             <p class="bold-p">This is how you can continue to view updates to our site on <code>http://localhost:8080/</code>.
+            <h2 class="text-left bold-h2">Bootstrap Themes</h2>
+            <p class="bold-p">In case you are not happy with the standard Boostrap theme. There are many other options that are easy to use. For this tutorial I will use the <a href="https://bootswatch.com/simplex/">Simplex</a> theme from <a href="https://bootswatch.com/">bootswatch</a>. On this page, just right click on the download button for Simplex and select "Save Link As...". Save it as simplex_bootstrap.min.css which we will put in <code>flask_app/static/css</code> folder (you will need to create the static/css folder). We can now replace:</p>
+            <pre><code class="html">
+                &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" 
+                integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" 
+                crossorigin="anonymous"&gt;
+            </code></pre>
+            <p class="bold-p">With (in index.html):</p>
+            <pre><code class="html">
+                &lt;link rel="stylesheet" href="/static/css/simplex_bootstrap.min.css"&gt;
+            </code></pre>
+            <p class="bold-p">This will now use the CSS stylings from your downloaded file instead of the standard bootstrap CSS file we were getting from maxcdn (which basically just delivered the content over the internet instead of having us download it locally). If you are not familiar with CSS, code academy has a <a href="https://www.codecademy.com/en/tracks/htmlcss">course</a>. Basically, CSS is what allows you to change the appearance of your site.</p>
+            <h2 class="text-left bold-h2">Data</h2>
+            <p class="bold-p">So we are supposed to be building a web app that uses data in someway, so let's get some data. We will be using data from New Your City restaurant inspection results found <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/xx67-kt59">here</a>. These data are exactly what they sound like, restaurant inspection results. I took these data and calculated the total number for each grade (A, B, C, ...) and saved it as JSON. JSON is basically the data format of the web (<a href="http://www.copterlabs.com/blog/json-what-it-is-how-it-works-how-to-use-it/">here</a> is some information on JSON if you are not familiar). You can find these data <a href="https://github.com/tfolkman/data_app_tutorial/blob/master/flask_app/static/data/grade_dist.json">here</a>. Save these data as <code>flask_app/static/data/grade_dist.json</code>.
+            <h2 class="text-left bold-h2">Visualization</h2>
+            <p class="bold-p">Alright - let's go ahead and visualize these data. We are going to use <a href="http://metricsgraphicsjs.org/">MetricsGraphics.js</a> from Mozilla. I really love this library. It is open source and built on top of <a href="http://d3js.org/">D3.js</a>. I feel like it has a nice API that creates beautiful charts out of the box. It was originally built for time series data, but we are going to use it for a bar chart. Another nice charting library that is built on D3 is <a href="http://www.chartjs.org/">Chart.js</a>. Download MetricsGraphics from <a href="https://github.com/mozilla/metrics-graphics/releases/tag/v2.7.0">here</a>. Once you un-archive the download, go into its dist folder. Copy metricsgraphics.css to <code>flask_app/static/css</code> and metricsgraphics.min.js to <code>flask_app/static/js</code>. Now let's change our <code>views.py</code> to this:
+            <pre><code class="html">
+                &lt;!DOCTYPE html&gt;
+                &lt;html lang="en"&gt;
 
+                &lt;head&gt;
+                    &lt;meta charset="utf-8"&gt;
+                    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+                    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+                    &lt;!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags --&gt;
+                    &lt;title&gt;NY Food Grades&lt;/title&gt;
+                    &lt;link rel="stylesheet" href="/static/css/simplex_bootstrap.min.css"&gt;
+                    &lt;link href="/static/css/metricsgraphics.css" rel="stylesheet"&gt;
+                &lt;/head&gt;
 
+                &lt;body&gt;
+                    &lt;div class="container"&gt;
+                        &lt;h1&gt;Distribution of NY Food Grades&lt;/h1&gt;
+                        &lt;p class="lead"&gt;All Cuisine Types&lt;/p&gt;
+                        &lt;div id='food-line-chart'&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;!-- jQuery (necessary for Bootstrap's JavaScript plugins) --&gt;
+                    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"&gt;&lt;/script&gt;
+                    &lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;
+                    &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" 
+                    integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+                    crossorigin="anonymous"&gt;&lt;/script&gt;
+                    &lt;script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.0/d3.min.js' charset='utf-8'&gt;&lt;/script&gt;
+                    &lt;script src="/static/js/metricsgraphics.min.js"&gt;&lt;/script&gt;
+                    &lt;script&gt;
+                    d3.json('/static/data/grade_dist.json', function(data) {
+                        MG.data_graphic({
+                            data: data,
+                            width: 650,
+                            height: 420,
+                            target: '#food-line-chart',
+                            chart_type: 'bar',
+                            bar_orientation: 'vertical',
+                            y_accessor: 'count',
+                            x_accessor: 'grade',
+                        })
+                    })
+                    &lt;/script&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
+            </code></pre>
+            <p class="bold-p"> Let's take a look at what is going on here. The <code>head</code> is brining in our CSS files and defining our title (shows up on the tab). The body has a title and a sub-title for our graph as well as a <code>div</code> to hold our graph. Then we bring in all of our necessary JS files. Lastly, we define the javascript necessary for our chart. This script is using metricsgraphics.js and is surprisingly readable. The data: reads in our data, the target: tells it where to render the chart, and the accessor keys define the keys to use from our JSON data. If everything has gone well, you should see something like this:</p>
+            <div class="row" style="height:500">
+                <div class="col-sm-12">
+                    <img src="/static/images/data_app_1_ss.png" class="img-responsive" style="max-height:500px">
+                </div>
+            </div>
+            <h2 class="text-left bold-h2">Conclusion</h2>
+            <p class="bold-p">Hopefully everything has gone smoothly for you! You can find everything on <a href="https://github.com/tfolkman/data_app_tutorial">GitHub</a> if you are having trouble. You will have noticed that I didn't go into much detail about each of the components. Instead, I tried to link to good resources. There are amazing resources on the web for almost all of this. I just didn't find much on putting everything together. I truly believe that having a decent set of web skills can be a great asset for data scientists. Being able to present your data or models in an interactive, attractive, and accessible way can be very powerful. Hopefully this tutorial will help you in building these skills.
+            <br><br>
+            Also, this is just the first part in a series of posts I would like to do. I want to cover other technologies including PostgreSQL, SQLAlchemy, Redis, React.js, and AJAX. If this sounds interesting to you, please let me know ( helps my motivation :) ). And, as always, if you found anything unclear or wrong in this post or just want to reach out, please do!
         </div>
     </section>
 
