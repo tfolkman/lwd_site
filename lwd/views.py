@@ -111,6 +111,10 @@ def data_app_tutorial():
         {
             'href': '/resources/',
             'name': 'Data Science Resources'
+        },
+        {
+            'href': '/#about',
+            'name': 'About/Contact'
         }
     ]
 

@@ -100,11 +100,20 @@
 	},
 	{
 		"id": "11",
-		"most_recent": "True",
+		"most_recent": "False",
 		"href": "http://nbviewer.ipython.org/github/tfolkman/learningwithdata/blob/master/Predict%20Fantasy%20Football%20Points.ipynb",
 		"title": "Fantasy Football Predictions",
 		"sub_title": "My attempt to predict Fantasy Football points better than ESPN",
 		"image_source": "/static/images/ff_predictions.png",
 		"date": "20151009"
+	},
+	{
+		"id": "12",
+		"most_recent": "True",
+		"href": "http://learningwithdata.com/data_app_tutorial/",
+		"title": "Building a Data Web App",
+		"sub_title": "For Data Scientists",
+		"image_source": "/static/images/data_app_1_ss.png",
+		"date": "20151123"
 	}
 ]
