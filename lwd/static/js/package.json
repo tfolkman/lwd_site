@@ -1,11 +1,12 @@
-{  
-  "name": "lwd",  
-  "version": "0.0.1",  
-  "dependencies" : {  
-    "react" : "*",  
-    "react-dom" : "*",  
-    "react-select" : "*",  
-    "babelify" : "*",  
-    "highlight.js" : "*"
-  }  
+{
+  "name": "lwd",
+  "version": "0.0.1",
+  "dependencies": {
+    "babelify": "*",
+    "highlight.js": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-highcharts": "^7.0.0",
+    "react-select": "*"
+  }
 }

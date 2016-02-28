@@ -12,3 +12,4 @@ redis_db.config_set("maxmemory-policy", "allkeys-lru")
 
 from . import views, models
 from . import nfl_views
+from . import pres_views
