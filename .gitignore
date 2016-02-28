@@ -1,6 +1,7 @@
 app_o.py
 venv/
 logs/
+data/
 node_modules/
 *.sql
 todo.txt
