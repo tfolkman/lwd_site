@@ -24613,9 +24613,68 @@ var Rcslider = require('rc-slider');
 var slider_style = { width: 300, marginTop: 50 };
 var input_style = { width: 300, height: 50 };
 var button_style = { width: 50, height: 50, color: "black" };
+var gen_style = { width: 150, height: 50, color: "black" };
+
+var GenText = React.createClass({
+    displayName: 'GenText',
+
+    render: function render() {
+        return React.createElement(
+            'div',
+            { className: 'row' },
+            React.createElement(
+                'p',
+                { className: 'gen-text' },
+                this.props.seed_text
+            )
+        );
+    }
+});
 
 var PresApp = React.createClass({
     displayName: 'PresApp',
+
+    getInitialState: function getInitialState() {
+        return { seed_text: '', gen_text: '' };
+    },
+
+    onChange: function onChange(e) {
+        this.setState({ seed_text: e.target.value });
+    },
+
+    handleGenText: function handleGenText(e) {
+        $.ajax({
+            url: "/gen_seed_text/",
+            type: 'GET',
+            contentType: 'application/json;charset=UTF-8',
+            dataType: 'json',
+            cache: false,
+            success: (function (data) {
+                this.setState({ seed_text: data });
+            }).bind(this),
+            error: (function (xhr, status, err) {
+                console.error(this.state.seed_text, status, err.toString());
+            }).bind(this)
+        });
+    },
+
+    handleSubmitText: function handleSubmitText(e) {
+        e.preventDefault();
+        $.ajax({
+            url: "/gen_cand_text/",
+            type: 'POST',
+            data: JSON.stringify({ 'seed_text': this.state.seed_text }),
+            contentType: 'application/json;charset=UTF-8',
+            dataType: 'json',
+            cache: false,
+            success: (function (data) {
+                this.setState({ gen_text: data['gen_text'] });
+            }).bind(this),
+            error: (function (xhr, status, err) {
+                console.error(this.state.seed_text, status, err.toString());
+            }).bind(this)
+        });
+    },
 
     render: function render() {
         return React.createElement(
@@ -24652,16 +24711,24 @@ var PresApp = React.createClass({
                         { className: 'bold-h2' },
                         'Seed text of four words'
                     ),
-                    React.createElement('input', { type: 'text', style: input_style }),
                     React.createElement(
                         'button',
-                        { style: button_style },
-                        ' ',
-                        'GO',
-                        ' '
+                        { style: gen_style, onClick: this.handleGenText },
+                        'Generate for me'
+                    ),
+                    React.createElement(
+                        'form',
+                        { onSubmit: this.handleSubmitText },
+                        React.createElement('input', { onChange: this.onChange, value: this.state.seed_text, style: input_style }),
+                        React.createElement(
+                            'button',
+                            { style: button_style },
+                            'GO'
+                        )
                     )
                 )
-            )
+            ),
+            React.createElement(GenText, { seed_text: this.state.gen_text })
         );
     }
 });

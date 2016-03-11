@@ -84,3 +84,8 @@ h3 {
     padding-top: 30px;
     position: relative;
 }
+
+.gen-text {
+  color: black;
+  margin-top: 40px;
+}
