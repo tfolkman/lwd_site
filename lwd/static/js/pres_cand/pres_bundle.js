@@ -24615,8 +24615,24 @@ var input_style = { width: 300, height: 50 };
 var button_style = { width: 50, height: 50, color: "black" };
 var gen_style = { width: 150, height: 50, color: "black" };
 
-var GenText = React.createClass({
-    displayName: 'GenText',
+var ErrorGenText = React.createClass({
+    displayName: 'ErrorGenText',
+
+    render: function render() {
+        return React.createElement(
+            'div',
+            { className: 'row' },
+            React.createElement(
+                'p',
+                { className: 'error-gen-text' },
+                this.props.char
+            )
+        );
+    }
+});
+
+var SuccessGenText = React.createClass({
+    displayName: 'SuccessGenText',
 
     render: function render() {
         return React.createElement(
@@ -24625,9 +24641,23 @@ var GenText = React.createClass({
             React.createElement(
                 'p',
                 { className: 'gen-text' },
-                this.props.seed_text
+                this.props.gen_text
             )
         );
+    }
+});
+
+var GenText = React.createClass({
+    displayName: 'GenText',
+
+    render: function render() {
+        var genText;
+        if (this.props.error_flag == 1) {
+            genText = React.createElement(ErrorGenText, { char: this.props.gen_text });
+        } else {
+            genText = React.createElement(SuccessGenText, { gen_text: this.props.gen_text });
+        }
+        return genText;
     }
 });
 
@@ -24635,11 +24665,17 @@ var PresApp = React.createClass({
     displayName: 'PresApp',
 
     getInitialState: function getInitialState() {
-        return { seed_text: '', gen_text: '' };
+        return { seed_text: '', gen_text: '', diversity: '1.0', gen_error: '0' };
     },
 
     onChange: function onChange(e) {
         this.setState({ seed_text: e.target.value });
+    },
+
+    onSliderChange: function onSliderChange(value) {
+        this.setState({
+            diversity: value
+        });
     },
 
     handleGenText: function handleGenText(e) {
@@ -24663,12 +24699,13 @@ var PresApp = React.createClass({
         $.ajax({
             url: "/gen_cand_text/",
             type: 'POST',
-            data: JSON.stringify({ 'seed_text': this.state.seed_text }),
+            data: JSON.stringify({ 'seed_text': this.state.seed_text,
+                'diversity': this.state.diversity }),
             contentType: 'application/json;charset=UTF-8',
             dataType: 'json',
             cache: false,
             success: (function (data) {
-                this.setState({ gen_text: data['gen_text'] });
+                this.setState({ gen_text: data['gen_text'], gen_error: data['error_flag'] });
             }).bind(this),
             error: (function (xhr, status, err) {
                 console.error(this.state.seed_text, status, err.toString());
@@ -24700,7 +24737,8 @@ var PresApp = React.createClass({
                     React.createElement(
                         'div',
                         { style: slider_style },
-                        React.createElement(Rcslider, { min: 0.05, max: 1.0, step: 0.05 })
+                        React.createElement(Rcslider, { min: 0.05, max: 1.0, step: 0.05, defaultValue: 1.0,
+                            onChange: this.onSliderChange })
                     )
                 ),
                 React.createElement(
@@ -24728,7 +24766,8 @@ var PresApp = React.createClass({
                     )
                 )
             ),
-            React.createElement(GenText, { seed_text: this.state.gen_text })
+            React.createElement('p', { className: 'line' }),
+            React.createElement(GenText, { gen_text: this.state.gen_text, error_flag: this.state.gen_error })
         );
     }
 });

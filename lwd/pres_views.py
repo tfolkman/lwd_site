@@ -35,11 +35,19 @@ def gen_seed_text():
 @app.route("/gen_cand_text/", methods=['POST'])
 def gen_cand_text():
     seed_text = request.json['seed_text']
-    seed_text = "<START> " + seed_text
     seed_text_list = seed_text.split(" ")
-    gen_text = gen_sentence_from_seed(seed_text_list)
-    gen_sentence = " ".join(gen_text)
-    json_data = {'gen_text': gen_sentence}
+    seed_text_list = [word.lower() for word in seed_text_list[:4]]
+    if len(seed_text_list) < 4:
+        json_data = {'gen_text': "Passed less than 4 words.", "error_flag": 1}
+        return json.dumps(json_data)
+    seed_text_list.insert(0, "<START>")
+    diversity = float(request.json['diversity'])
+    gen_text, error_flag = gen_sentence_from_seed(seed_text_list, diversity)
+    if error_flag == 0:
+        gen_sentence = " ".join(gen_text)
+    else:
+        gen_sentence = gen_text + " is not in vocabulary."
+    json_data = {'gen_text': gen_sentence, "error_flag": error_flag}
     return json.dumps(json_data)
 
 
@@ -53,7 +61,7 @@ def sample(a, temperature=1.0):
     return argmax(multinomial(1, a, 1))
 
 
-def gen_sentence_from_seed(seed_text):
+def gen_sentence_from_seed(seed_text, diversity):
     generated = []
     sentence = seed_text
     # don't show <start>
@@ -63,10 +71,13 @@ def gen_sentence_from_seed(seed_text):
     while next_char != "<END>":
         x = zeros((1, 5, len(char_to_indicies.keys())))
         for t, char in enumerate(sentence):
-            x[0, t, char_to_indicies[char]] = 1.
+            try:
+                x[0, t, char_to_indicies[char]] = 1.
+            except KeyError:
+                return char, 1
 
         preds = model.predict(x, verbose=0)[0]
-        next_index = sample(preds, 1.0)
+        next_index = sample(preds, diversity)
         next_char = indicies_to_char[str(next_index)]
 
         # generated keeps track of text im generating
@@ -74,7 +85,7 @@ def gen_sentence_from_seed(seed_text):
         # sentence shifts down by 1 for next loop
         sentence = sentence[1:]
         sentence.append(next_char)
-    return generated[:-1]
+    return generated[:-1], 0
 
 
 @app.route("/talk_like_pres_candidate/")

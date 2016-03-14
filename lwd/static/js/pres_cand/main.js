@@ -7,15 +7,41 @@ const input_style = {width: 300, height: 50};
 const button_style = {width: 50, height: 50, color: "black"};
 const gen_style = {width: 150, height: 50, color: "black"};
 
-var GenText = React.createClass({
+var ErrorGenText = React.createClass({
+    render: function() {
+        return (
+            <div className="row">
+                <p className="error-gen-text">
+                    {this.props.char}
+                </p>
+            </div>
+        );
+    }
+})
 
+var SuccessGenText = React.createClass({
     render: function() {
         return (
             <div className="row">
                 <p className="gen-text">
-                    {this.props.seed_text}
+                    {this.props.gen_text}
                 </p>
             </div>
+        );
+    }    
+})
+
+var GenText = React.createClass({
+
+    render: function() {
+        var genText;
+        if (this.props.error_flag == 1) {
+            genText = <ErrorGenText char={this.props.gen_text} />;
+        } else {
+            genText = <SuccessGenText gen_text={this.props.gen_text} />;
+        }
+        return (
+            genText
         );
     }    
 })
@@ -23,12 +49,18 @@ var GenText = React.createClass({
 var PresApp = React.createClass({
 
      getInitialState: function() {
-        return {seed_text: '', gen_text: ''};
+        return {seed_text: '', gen_text: '', diversity: '1.0', gen_error: '0'};
       },
 
       onChange: function(e) {
         this.setState({seed_text: e.target.value});
       },
+
+    onSliderChange: function(value) {
+        this.setState({
+            diversity: value,
+        });
+    },
 
       handleGenText: function(e) {
         $.ajax({
@@ -51,12 +83,13 @@ var PresApp = React.createClass({
         $.ajax({
             url: "/gen_cand_text/",
             type: 'POST',
-            data: JSON.stringify({'seed_text': this.state.seed_text}),
+            data: JSON.stringify({'seed_text': this.state.seed_text,
+                                    'diversity': this.state.diversity}),
             contentType: 'application/json;charset=UTF-8',
             dataType: 'json',
             cache: false,
             success: function(data) {
-                this.setState({gen_text: data['gen_text']});
+                this.setState({gen_text: data['gen_text'], gen_error: data['error_flag']});
             }.bind(this),
             error: function(xhr, status, err) {
                 console.error(this.state.seed_text, status, err.toString());
@@ -73,7 +106,8 @@ var PresApp = React.createClass({
                     <div className="col-sm-4">
                         <h2 className="bold-h2">Diversity</h2> 
                         <div style={slider_style}>
-                            <Rcslider min={0.05} max={1.0} step={0.05}/>
+                            <Rcslider min={0.05} max={1.0} step={0.05} defaultValue={1.0}
+                                onChange={this.onSliderChange} />
                         </div>
                     </div>
                     <div className="col-sm-4">
@@ -85,7 +119,8 @@ var PresApp = React.createClass({
                         </form>
                     </div>
                 </div>
-                <GenText seed_text={this.state.gen_text}/>
+                <p className="line"></p>
+                <GenText gen_text={this.state.gen_text} error_flag={this.state.gen_error}/>
             </div>
         );
     }

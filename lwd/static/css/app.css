@@ -88,4 +88,11 @@ h3 {
 .gen-text {
   color: black;
   margin-top: 40px;
+  font-size: 25px;
+}
+
+.error-gen-text {
+  color: red;
+  margin-top: 40px;
+  font-size: 25px;
 }
