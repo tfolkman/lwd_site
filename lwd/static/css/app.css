@@ -67,6 +67,15 @@ h3 {
     margin: 40px 0;
 }
 
+.bold-h3 {
+    color: #123874;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 40px 0;
+}
+
 .bold-p {
     color: #685206;
     font-family: 'Helvetica Neue', sans-serif;
@@ -87,7 +96,7 @@ h3 {
 
 .gen-text {
   color: black;
-  margin-top: 40px;
+  margin-left: 25px;
   font-size: 25px;
 }
 
